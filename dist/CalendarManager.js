@@ -19,16 +19,13 @@ var CalendarManager = /** @class */ (function () {
             'Sábado',
             'Domingo',
         ];
-        this.monthsLength = [
-            31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31,
-        ];
         this.calendars = [];
     }
-    CalendarManager.prototype.getMonthLength = function (i) {
-        if (i < 0 || i >= 12) {
-            throw new Error('No se puede acceder al largo de un mes que no existe.');
+    CalendarManager.prototype.getMonthsLength = function (isLeap) {
+        if (isLeap) {
+            return [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         }
-        return this.monthsLength[i];
+        return [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     };
     CalendarManager.prototype.getDayName = function (i) {
         if (i < 0 || i >= 7) {
@@ -59,13 +56,14 @@ var CalendarManager = /** @class */ (function () {
         }
         throw new Error('El año buscado no existe en el calendario');
     };
-    CalendarManager.prototype.createCalendar = function (year, firstDay) {
+    CalendarManager.prototype.createCalendar = function (year, firstDay, isleapYear) {
         var currentName = firstDay;
+        var isLeap = isleapYear;
         var dates = this.createEmptyDates();
         for (var i = 0; i < 12; i++) {
-            for (var j = 0; j < this.getMonthLength(i); j++) {
+            for (var j = 0; j < this.getMonthsLength(isLeap)[i]; j++) {
                 dates[i].push(new Day(this.getDayName(currentName), this.dateToString(j, i, year)));
-                currentName = this.getNextDayName(currentName);
+                currentName = this.getNextDay(currentName);
             }
         }
         return new Calendar(year, dates);
@@ -76,7 +74,7 @@ var CalendarManager = /** @class */ (function () {
     CalendarManager.prototype.dateToString = function (day, month, year) {
         return '' + (day + 1) + '/' + (month + 1) + '/' + year;
     };
-    CalendarManager.prototype.getNextDayName = function (dayName) {
+    CalendarManager.prototype.getNextDay = function (dayName) {
         if (dayName < 6) {
             return dayName + 1;
         }

@@ -7,4 +7,12 @@ class Holiday extends Day {
         this.type = type;
         this.description = description;
     }
+
+    getType(): number {
+        return this.type;
+    }
+
+    getDescription(): String {
+        return this.description;
+    }
 }

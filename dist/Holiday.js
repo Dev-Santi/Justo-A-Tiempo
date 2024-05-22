@@ -22,5 +22,11 @@ var Holiday = /** @class */ (function (_super) {
         _this.description = description;
         return _this;
     }
+    Holiday.prototype.getType = function () {
+        return this.type;
+    };
+    Holiday.prototype.getDescription = function () {
+        return this.description;
+    };
     return Holiday;
 }(Day));

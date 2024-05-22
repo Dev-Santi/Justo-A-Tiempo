@@ -21,29 +21,21 @@ class CalendarManager {
         'Sábado',
         'Domingo',
     ];
-    private monthsLength: number[] = [
-        31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31,
-    ];
 
     constructor() {
         this.calendars = [];
     }
 
-    getMonthLength(i: number): number {
-        if (i < 0 || i >= 12) {
-            throw new Error(
-                'No se puede acceder al largo de un mes que no existe.'
-            );
+    getMonthsLength(isLeap?: boolean): Array<number> {
+        if (isLeap) {
+            return [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         }
-
-        return this.monthsLength[i];
+        return [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     }
 
     getDayName(i: number): String {
         if (i < 0 || i >= 7) {
-            throw new Error(
-                'No se puede acceder al nombre de un dia que no existe.'
-            );
+            throw new Error('No se puede acceder al nombre de un dia que no existe.');
         }
 
         return this.dayNames[i];
@@ -77,19 +69,18 @@ class CalendarManager {
         throw new Error('El año buscado no existe en el calendario');
     }
 
-    createCalendar(year: String, firstDay: number): Calendar {
+    createCalendar(year: String, firstDay: number, isleapYear?: boolean): Calendar {
         let currentName: number = firstDay;
+        let isLeap: boolean | undefined = isleapYear;
+
         const dates: Day[][] = this.createEmptyDates();
 
         for (let i = 0; i < 12; i++) {
-            for (let j = 0; j < this.getMonthLength(i); j++) {
+            for (let j = 0; j < this.getMonthsLength(isLeap)[i]; j++) {
                 dates[i].push(
-                    new Day(
-                        this.getDayName(currentName),
-                        this.dateToString(j, i, year)
-                    )
+                    new Day(this.getDayName(currentName), this.dateToString(j, i, year))
                 );
-                currentName = this.getNextDayName(currentName);
+                currentName = this.getNextDay(currentName);
             }
         }
 
@@ -104,7 +95,7 @@ class CalendarManager {
         return '' + (day + 1) + '/' + (month + 1) + '/' + year;
     }
 
-    private getNextDayName(dayName: number): number {
+    private getNextDay(dayName: number): number {
         if (dayName < 6) {
             return dayName + 1;
         }
