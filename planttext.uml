@@ -1,0 +1,62 @@
+@startuml
+!theme crt-amber
+
+title Justo A Tiempo
+
+class Calendar {
+  -years : ArrayList<Year>
+  
+  +Calendar()
+  
+  +getYears() : ArrayList<Year>
+  +addYear(Year newYear) : void
+  +getYear(String name) : Year
+}
+
+class Year {
+  -name : String
+  -months : Month[]
+  
+  +Year(String name, Month[])
+  
+  +getDate() : String
+  +getMonths() : Month[]
+  +getMonth(int number) : Month
+  +isLeapYear() : boolean
+}
+
+class Month {
+  -name : String
+  -days : Day[]
+  
+  +Month(String name, Day[] days)
+  
+  +getName() : String
+  +getDays() : Day[]
+  +getDay(int number) : Day
+  +getFirstDay() : Day
+}
+
+class Day {
+  -name : String
+  
+  +Day(String name)
+  
+  +getName() : String
+}Tiempo
+
+class Holiday extends Day {
+  -type : int
+  -description: String
+  
+  +Holiday(String name, int type, String description)
+
+  +getType() : int
+  +getDescription() : String
+}
+
+Calendar o-- Year
+Year o-- Month
+Month o-- Day
+
+@enduml

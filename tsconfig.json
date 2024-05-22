@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "none",
+        "outDir": "./dist",
+        "rootDir": "./domain",
+        "strict": true
+    },
+    "include": ["domain/**/*.ts"]
+}
