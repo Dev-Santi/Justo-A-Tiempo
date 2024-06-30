@@ -3,14 +3,29 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="globals.css" />
         <title>Justo A Tiempo</title>
     </head>
     <body>
-        <script src="./dist/Day.js"></script>
-        <script src="./dist/Holiday.js"></script>
-        <script src="./dist/Calendar.js"></script>
-        <script src="./dist/CalendarManager.js"></script>
+        <div class="border-2 p-5 mt-20 flex justify-center">
+            <div
+                class="grid grid-cols-7 text-center items-center justify-center"
+            >
+                <span class="m-2">Lunes</span>
+                <span class="m-2">Martes</span>
+                <span class="m-2">Miércoles</span>
+                <span class="m-2">Jueves</span>
+                <span class="m-2">Viernes</span>
+                <span class="m-2">Sábado</span>
+                <span class="m-2">Domingo</span>
+            </div>
+        </div>
+
+        <script src="./dist/calendar/day.js"></script>
+        <script src="./dist/calendar/calendar.js"></script>
         <script src="./dist/main.js"></script>
+        <!-- Only in develop -->
+        <script src="./dist/main.test.js"></script>
     </body>
 </html>
