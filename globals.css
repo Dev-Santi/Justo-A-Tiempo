@@ -6,7 +6,8 @@
 /* Resets */
 
 * {
-    /* outline: 1px solid black; */
+    /* "Test" for when the thing doesn't do the thing */
+    /* outline: 1px solid black;  */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -16,6 +17,11 @@ button {
     background: none;
     border: none;
     font-size: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Styles */
@@ -30,6 +36,7 @@ html {
     --clr-3: #2d60ff;
     --clr-4: #718ebf;
     --clr-5: #fe5c73;
+    --clr-6: #343c6a;
     /* sizes */
     --text-sm: 1.125rem;
     --text-xl: 1.75rem;
@@ -44,8 +51,10 @@ main {
     width: 100%;
 }
 
-/* Navigation */
-aside {
+/* ------------- Main panel ------------- */
+
+/* Aside navigation */
+aside.main_panel {
     padding-top: 3rem;
     padding-left: 2.6rem;
     padding-right: 3.6rem;
@@ -54,26 +63,35 @@ aside {
     border-right: 3px solid var(--clr-2);
 }
 
-aside nav ul {
+aside.main_panel nav ul {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
 }
 
-aside nav ul li {
+aside.main_panel nav ul li {
     display: flex;
     align-items: center;
-    gap: 1.625rem;
     font-size: var(--text-sm);
 }
 
-aside nav ul li.disabled {
-    filter: grayscale(100);
-    opacity: 0.4;
-    cursor: not-allowed;
+aside.main_panel nav ul li a {
+    display: flex;
+    gap: 1.625rem;
+    color: var(--clr-3);
 }
 
-aside nav ul li .current_page_decoration {
+aside.main_panel nav ul li.disabled a {
+    filter: grayscale(100);
+    opacity: 0.4;
+}
+
+aside.main_panel nav ul li.disabled.unavaible a {
+    cursor: url("assets/cursors/cursor_unavaible.png") 55 12, auto;
+    pointer-events: visible;
+}
+
+aside.main_panel nav ul li .current_page_decoration {
     position: absolute;
     left: 0;
     width: 0.6rem;
@@ -84,7 +102,7 @@ aside nav ul li .current_page_decoration {
 }
 
 /* Header */
-header {
+header.main_panel {
     display: flex;
     justify-content: space-between;
     padding-block: 2rem;
@@ -93,20 +111,21 @@ header {
     border-bottom: 2px solid var(--clr-2);
 }
 
-header h1 {
+header.main_panel h1 {
     display: flex;
     align-items: center;
 
     font-size: var(--text-xl);
     font-weight: 600;
+    color: var(--clr-6);
 }
 
-header .header_icons {
+header.main_panel .header_icons {
     display: flex;
     gap: 0.875rem;
 }
 
-header .header_icons button {
+header.main_panel .header_icons button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,10 +137,25 @@ header .header_icons button {
     background-color: var(--clr-1);
 }
 
-header .header_icons .no-notification path {
+header.main_panel .header_icons .no-notification path {
     fill: var(--clr-4);
 }
 
-header .header_icons .has-notification path {
+header.main_panel .header_icons .has-notification path {
     fill: var(--clr-5);
+}
+
+/* Mobile ajusts, not a mobile first guy */
+/* 63.9375 == 1023px / desktop starts at 1024px */
+@media (max-width: 63.9375rem) {
+    aside.main_panel[data-state="0"] {
+        display: none;
+    }
+    aside.main_panel {
+        position: absolute;
+    }
+
+    #idHeaderSettingsBtn {
+        display: none;
+    }
 }
