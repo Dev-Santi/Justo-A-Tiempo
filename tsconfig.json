@@ -6,5 +6,5 @@
         "rootDir": "./domain",
         "strict": true
     },
-    "include": ["domain/**/*.ts", "domain/**/*.test.ts"]
+    "include": ["domain/**/*.ts"]
 }

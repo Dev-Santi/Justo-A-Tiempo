@@ -1,5 +1,127 @@
+@font-face {
+    font-family: "Inter";
+    src: url("./assets/fonts/inter.ttf");
+}
+
+/* Resets */
+
 * {
+    /* outline: 1px solid black; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+button {
+    background: none;
+    border: none;
+    font-size: inherit;
+}
+
+/* Styles */
+
+html {
+    font-family: Inter;
+    /* variables */
+    /* colors */
+    --clr-0: #f5f7fa;
+    --clr-1: #e5e5e5;
+    --clr-2: #e6eff5;
+    --clr-3: #2d60ff;
+    --clr-4: #718ebf;
+    --clr-5: #fe5c73;
+    /* sizes */
+    --text-sm: 1.125rem;
+    --text-xl: 1.75rem;
+}
+
+body {
+    display: flex;
+    background-color: var(--clr-1);
+}
+
+main {
+    width: 100%;
+}
+
+/* Navigation */
+aside {
+    padding-top: 3rem;
+    padding-left: 2.6rem;
+    padding-right: 3.6rem;
+    min-height: 100vh;
+    background-color: var(--clr-0);
+    border-right: 3px solid var(--clr-2);
+}
+
+aside nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+aside nav ul li {
+    display: flex;
+    align-items: center;
+    gap: 1.625rem;
+    font-size: var(--text-sm);
+}
+
+aside nav ul li.disabled {
+    filter: grayscale(100);
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+aside nav ul li .current_page_decoration {
+    position: absolute;
+    left: 0;
+    width: 0.6rem;
+    height: 4rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: var(--clr-3);
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 2rem;
+    padding-inline: 3.2rem;
+    background-color: var(--clr-0);
+    border-bottom: 2px solid var(--clr-2);
+}
+
+header h1 {
+    display: flex;
+    align-items: center;
+
+    font-size: var(--text-xl);
+    font-weight: 600;
+}
+
+header .header_icons {
+    display: flex;
+    gap: 0.875rem;
+}
+
+header .header_icons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 3.125rem;
+    width: 3.125rem;
+
+    border-radius: 50%;
+    background-color: var(--clr-1);
+}
+
+header .header_icons .no-notification path {
+    fill: var(--clr-4);
+}
+
+header .header_icons .has-notification path {
+    fill: var(--clr-5);
 }

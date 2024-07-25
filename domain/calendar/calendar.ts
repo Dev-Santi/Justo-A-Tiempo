@@ -17,7 +17,30 @@ class Calendar {
 
     addHoliday(date: String, type: Number, description: String) {
         for (let i = 0; i < this.dates.length; i++) {
-            for (let j = 0; i < this.dates[i].length; i++) {}
+            for (let j = 0; j < this.dates[i].length; j++) {
+                let curr = this.dates[i][j];
+
+                if (curr.getDate() === date) {
+                    this.dates[i][j] = new Holiday(
+                        curr.getName(),
+                        curr.getDate(),
+                        type,
+                        description
+                    );
+                }
+            }
+        }
+    }
+
+    delHoliday(date: String) {
+        for (let i = 0; i < this.dates.length; i++) {
+            for (let j = 0; j < this.dates[i].length; j++) {
+                let curr = this.dates[i][j];
+
+                if (curr.getDate() === date) {
+                    this.dates[i][j] = new Day(curr.getName(), curr.getDate());
+                }
+            }
         }
     }
 }
@@ -78,10 +101,10 @@ class CalendarBuilder {
 
         for (let i = 0; i < 12; i++) {
             let newMonth: Array<Day> = [];
-            const month = i + 1 < 10 ? "0" + (i + 1) : i + 1 + "";
+            const month = this.parseDate(i);
 
             for (let j = 0; j < this.daysPerMonth[i]; j++) {
-                const day = j + 1 < 10 ? "0" + (j + 1) : j + 1 + "";
+                const day = this.parseDate(j);
                 newMonth.push(
                     new Day(
                         this.dayNames[currentDay],
@@ -97,5 +120,9 @@ class CalendarBuilder {
 
             this.dates.push(newMonth);
         }
+    }
+
+    private parseDate(i: number) {
+        return i + 1 < 10 ? "0" + (i + 1) : i + 1 + "";
     }
 }
