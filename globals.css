@@ -7,7 +7,7 @@
 
 * {
     /* "Test" for when the thing doesn't do the thing */
-    /* outline: 1px solid black;  */
+    /* outline: 1px solid black; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -79,6 +79,7 @@ aside.main_panel nav ul li a {
     display: flex;
     gap: 1.625rem;
     color: var(--clr-3);
+    padding: 0.2rem;
 }
 
 aside.main_panel nav ul li.disabled a {
@@ -86,9 +87,10 @@ aside.main_panel nav ul li.disabled a {
     opacity: 0.4;
 }
 
-aside.main_panel nav ul li.disabled.unavaible a {
-    cursor: url("assets/cursors/cursor_unavaible.png") 55 12, auto;
-    pointer-events: visible;
+.development,
+.development * {
+    cursor: url("assets/cursors/cursor_development.png") 55 12, auto;
+    pointer-events:painted;
 }
 
 aside.main_panel nav ul li .current_page_decoration {
@@ -145,7 +147,7 @@ header.main_panel .header_icons .has-notification path {
     fill: var(--clr-5);
 }
 
-/* Mobile ajusts, not a mobile first guy */
+/* Mobile ajusts, yeah im not a mobile first guy */
 /* 63.9375 == 1023px / desktop starts at 1024px */
 @media (max-width: 63.9375rem) {
     aside.main_panel[data-state="0"] {
@@ -156,6 +158,12 @@ header.main_panel .header_icons .has-notification path {
     }
 
     #idHeaderSettingsBtn {
+        display: none;
+    }
+}
+
+@media (max-width: 26rem) {
+    header.main_panel h1 {
         display: none;
     }
 }

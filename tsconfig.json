@@ -3,8 +3,8 @@
         "target": "ES6",
         "module": "none",
         "outDir": "./dist",
-        "rootDir": "./domain",
+        "rootDir": "./",
         "strict": true
     },
-    "include": ["domain/**/*.ts"]
+    "include": ["domain/**/*.ts", "view/**/*.ts"]
 }
