@@ -90,7 +90,7 @@ aside.main_panel nav ul li.disabled a {
 .development,
 .development * {
     cursor: url("assets/cursors/cursor_development.png") 55 12, auto;
-    pointer-events:painted;
+    pointer-events: painted;
 }
 
 aside.main_panel nav ul li .current_page_decoration {
@@ -103,12 +103,12 @@ aside.main_panel nav ul li .current_page_decoration {
     background-color: var(--clr-3);
 }
 
-/* Header */
+/*-- Header Panel --*/
 header.main_panel {
     display: flex;
     justify-content: space-between;
     padding-block: 2rem;
-    padding-inline: 3.2rem;
+    padding-inline: 3rem;
     background-color: var(--clr-0);
     border-bottom: 2px solid var(--clr-2);
 }
@@ -147,23 +147,92 @@ header.main_panel .header_icons .has-notification path {
     fill: var(--clr-5);
 }
 
+#idCloseMenuBtn {
+    display: none;
+}
+
+#idOpenMenuBtn {
+    display: none;
+}
+
+.development_message {
+    display: none;
+}
+
 /* Mobile ajusts, yeah im not a mobile first guy */
 /* 63.9375 == 1023px / desktop starts at 1024px */
 @media (max-width: 63.9375rem) {
     aside.main_panel[data-state="0"] {
         display: none;
     }
+
     aside.main_panel {
         position: absolute;
+        z-index: 100;
+        min-height: 100dvh;
+
+        padding-top: 8rem;
+    }
+
+    .development_message {
+        display: block;
+        position: fixed;
+        z-index: 120;
+        bottom: 0;
+
+        left: 50%;
+        transform: translateX(-50%);
+
+        margin-bottom: 1rem;
+        background-color: var(--clr-0);
+        padding-block: 1rem;
+        padding-inline: 1.5rem;
+        border-radius: 1.5rem;
+        border: 2px solid var(--clr-6);
+
+        animation: fade-out 4s ease-in-out forwards;
     }
 
     #idHeaderSettingsBtn {
         display: none;
+    }
+
+    #idOpenMenuBtn {
+        display: block;
+        cursor: pointer;
+        transform: scale(1.4);
+    }
+
+    #idCloseMenuBtn {
+        display: block;
+        position: absolute;
+        z-index: 110;
+        top: 0;
+        left: 0;
+
+        margin-left: 3.1rem;
+        margin-top: 3rem;
+        transform: scale(1.55);
+        cursor: pointer;
     }
 }
 
 @media (max-width: 26rem) {
     header.main_panel h1 {
         display: none;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 0%;
+    }
+
+    25% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
     }
 }
