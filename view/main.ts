@@ -24,16 +24,26 @@ function setReadyTheMobileNavigation() {
 }
 
 function setReadyToDisplayDevelopmentMessage() {
-    const onDevelopmentElements =
-        document.getElementsByClassName("development");
+    const onDevelopmentElements = document.getElementsByClassName("development");
     const effectsContainer = document.getElementById("idEffectsContainer");
 
-    for (let i = 0; i < onDevelopmentElements.length; i++) {
+    for (let i = 0; i < onDevelopmentElements.length && effectsContainer; i++) {
         onDevelopmentElements[i].addEventListener("click", () => {
             const developMessage = document.createElement("div");
+            const icon = document.createElement("img");
+
+            icon.src = "./assets/icons/settings.svg";
+            icon.alt = "Si";
+
             developMessage.innerText = "En desarrollo";
             developMessage.classList.add("development_message");
-            effectsContainer?.appendChild(developMessage);
+            developMessage.appendChild(icon);
+
+            effectsContainer.appendChild(developMessage);
+
+            setTimeout(() => {
+                developMessage.remove();
+            }, 4000);
         });
     }
 }

@@ -17,6 +17,7 @@ button {
     background: none;
     border: none;
     font-size: inherit;
+    cursor: pointer;
 }
 
 a {
@@ -89,8 +90,7 @@ aside.main_panel nav ul li.disabled a {
 
 .development,
 .development * {
-    cursor: url("assets/cursors/cursor_development.png") 55 12, auto;
-    pointer-events: painted;
+    cursor: not-allowed;
 }
 
 aside.main_panel nav ul li .current_page_decoration {
@@ -116,6 +116,7 @@ header.main_panel {
 header.main_panel h1 {
     display: flex;
     align-items: center;
+    text-align: center;
 
     font-size: var(--text-xl);
     font-weight: 600;
@@ -155,8 +156,32 @@ header.main_panel .header_icons .has-notification path {
     display: none;
 }
 
+/* On development feature message */
+
 .development_message {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: fixed;
+    z-index: 120;
+    bottom: 0;
+    min-width: 10rem;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-bottom: 1rem;
+    background-color: var(--clr-0);
+    padding-block: 1rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 10px #0000001a;
+
+    animation: fade-out 4s ease-in-out forwards;
+}
+
+.development_message img {
+    animation: spining 2s linear infinite;
 }
 
 /* Mobile ajusts, yeah im not a mobile first guy */
@@ -174,32 +199,12 @@ header.main_panel .header_icons .has-notification path {
         padding-top: 8rem;
     }
 
-    .development_message {
-        display: block;
-        position: fixed;
-        z-index: 120;
-        bottom: 0;
-
-        left: 50%;
-        transform: translateX(-50%);
-
-        margin-bottom: 1rem;
-        background-color: var(--clr-0);
-        padding-block: 1rem;
-        padding-inline: 1.5rem;
-        border-radius: 1.5rem;
-        border: 2px solid var(--clr-6);
-
-        animation: fade-out 4s ease-in-out forwards;
-    }
-
     #idHeaderSettingsBtn {
         display: none;
     }
 
     #idOpenMenuBtn {
         display: block;
-        cursor: pointer;
         transform: scale(1.4);
     }
 
@@ -213,16 +218,16 @@ header.main_panel .header_icons .has-notification path {
         margin-left: 3.1rem;
         margin-top: 3rem;
         transform: scale(1.55);
-        cursor: pointer;
     }
 }
 
-@media (max-width: 26rem) {
+@media (max-width: 25rem) {
     header.main_panel h1 {
         display: none;
     }
 }
 
+/*--- Animations ---*/
 @keyframes fade-out {
     0% {
         opacity: 0%;
@@ -234,5 +239,15 @@ header.main_panel .header_icons .has-notification path {
 
     100% {
         opacity: 0%;
+    }
+}
+
+@keyframes spining {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
     }
 }
