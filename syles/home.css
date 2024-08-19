@@ -1,0 +1,10 @@
+/* Calc Date */
+#idNotificationDate {
+    background-color: var(--clr-2);
+    border-radius: 3.125rem;
+    border: none;
+
+    padding: 0.65rem 2.25rem;
+    font-size: 1rem;
+    color: var(--clr-4);
+}

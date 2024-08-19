@@ -4,14 +4,12 @@ function program() {
     // Menu behavior on mobile
     setReadyTheMobileNavigation();
     setReadyToDisplayDevelopmentMessage();
+    setDefaultValueOnCalcDate();
 }
 function setReadyTheMobileNavigation() {
     const menu = document.getElementById("idAsideMenu");
     const openMenuBtn = document.getElementById("idOpenMenuBtn");
     const closeMenuBtn = document.getElementById("idCloseMenuBtn");
-    if (!menu || !openMenuBtn || !closeMenuBtn) {
-        throw new Error("No es posible acceder a los elementos de navegación.");
-    }
     openMenuBtn.addEventListener("click", () => {
         menu.dataset.state = "1";
     });
@@ -37,4 +35,11 @@ function setReadyToDisplayDevelopmentMessage() {
             }, 4000);
         });
     }
+}
+function setDefaultValueOnCalcDate() {
+    const input = document.getElementById("idNotificationDate");
+    const date = new Date().toLocaleDateString().split("/");
+    const day = date[1].length < 2 ? "0" + date[1] : date[1];
+    const month = date[0].length < 2 ? "0" + date[0] : date[0];
+    input.value = date[2] + "-" + month + "-" + day;
 }

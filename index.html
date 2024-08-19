@@ -4,6 +4,8 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="stylesheet" href="globals.css" />
+      <link rel="stylesheet" href="./syles/common_styles.css" />
+      <link rel="stylesheet" href="./syles/home.css" />
       <title>Justo a Tiempo</title>
    </head>
    <body>
@@ -98,7 +100,29 @@
          <!-- End of the header panel -->
 
          <!-- Current page content -->
-         <section id="idCurrentPage" class="current_page"></section>
+         <section id="idCurrentPage" class="current_page">
+            <div class="card">
+               <h2>Calcula una fecha</h2>
+
+               <div class="card_content">
+                  <form id="idCalcDate">
+                     <div class="align_inputs_with_labels">
+                        <label for="idNotificationDate">Fecha de notificación:</label>
+                        <input id="idNotificationDate" type="date" />
+                     </div>
+
+                     <div class="align_inputs_with_labels">
+                        <!-- <label for=""></label>
+                        <select name="" id="">
+                           <option value="0"></option>
+                           <option value="1"></option>
+                           <option value="2"></option>
+                        </select> -->
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </section>
          <!-- End of the current page content -->
       </main>
       <div id="idEffectsContainer"></div>
