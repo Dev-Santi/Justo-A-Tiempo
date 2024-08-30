@@ -7,11 +7,11 @@ class Calendar {
         this.dates = newDates;
     }
 
-    getYear() {
+    getYear(): String {
         return this.year;
     }
 
-    getDates() {
+    getDates(): Array<Array<Day>> {
         return this.dates;
     }
 
@@ -46,15 +46,7 @@ class Calendar {
 }
 
 class CalendarBuilder {
-    private dayNames = [
-        "Lunes",
-        "Martes",
-        "Miércoles",
-        "Jueves",
-        "Viernes",
-        "Sábado",
-        "Domingo",
-    ];
+    private dayNames = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 
     private year: string;
     private dates: Array<Array<Day>>;
@@ -87,9 +79,7 @@ class CalendarBuilder {
 
     build() {
         if (!this.year || !this.firstDayName) {
-            throw new Error(
-                "Cannot build calendar without essential information."
-            );
+            throw new Error("Cannot build calendar without essential information.");
         }
 
         this.makeDates();
@@ -106,10 +96,7 @@ class CalendarBuilder {
             for (let j = 0; j < this.daysPerMonth[i]; j++) {
                 const day = this.parseDate(j);
                 newMonth.push(
-                    new Day(
-                        this.dayNames[currentDay],
-                        day + "/" + month + "/" + this.year
-                    )
+                    new Day(this.dayNames[currentDay], day + "/" + month + "/" + this.year)
                 );
 
                 currentDay++;

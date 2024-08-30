@@ -110,14 +110,19 @@
                         <label for="idNotificationDate">Fecha de notificación:</label>
                         <input id="idNotificationDate" type="date" />
                      </div>
-
                      <div class="align_inputs_with_labels">
-                        <!-- <label for=""></label>
-                        <select name="" id="">
-                           <option value="0"></option>
-                           <option value="1"></option>
-                           <option value="2"></option>
-                        </select> -->
+                        <label for="idCategory">Categoría:</label>
+                        <select id="idCategory">
+                           <option value="0">Laboral</option>
+                           <option value="1">Civil</option>
+                           <option value="2">Personalizada</option>
+                        </select>
+                        <img class="arrow_icon" src="./assets/icons/Arrow 1.png" alt="" />
+                     </div>
+                     <div class="align_inputs_with_labels">
+                        <label for="idTerm">Plazo:</label>
+                        <input id="idTerm" type="number" value="15" max="180" min="0" id="idTerm" />
+                        <span id="idTermText" class="day_text ml_1">días</span>
                      </div>
                   </form>
                </div>
@@ -125,6 +130,7 @@
          </section>
          <!-- End of the current page content -->
       </main>
+      <!-- Container for absolute effects -->
       <div id="idEffectsContainer"></div>
 
       <!-- Domain scripts -->

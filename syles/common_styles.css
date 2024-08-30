@@ -1,4 +1,5 @@
 .align_inputs_with_labels {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;

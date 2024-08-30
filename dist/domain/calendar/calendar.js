@@ -33,15 +33,7 @@ class Calendar {
 }
 class CalendarBuilder {
     constructor() {
-        this.dayNames = [
-            "Lunes",
-            "Martes",
-            "Miércoles",
-            "Jueves",
-            "Viernes",
-            "Sábado",
-            "Domingo",
-        ];
+        this.dayNames = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
         this.year = "";
         this.dates = [];
         this.firstDayName = "";
