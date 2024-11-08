@@ -10,12 +10,16 @@ class Calendar {
     getDates() {
         return this.dates;
     }
+    // Type 0 -> dia normal, type 1 -> feriado laborable, type 2 -> feriado no laborable, type 3 -> feria judicial
     addHoliday(date, type, description) {
         for (let i = 0; i < this.dates.length; i++) {
             for (let j = 0; j < this.dates[i].length; j++) {
                 let curr = this.dates[i][j];
                 if (curr.getDate() === date) {
-                    this.dates[i][j] = new Holiday(curr.getName(), curr.getDate(), type, description);
+                    const holiday = new Day(curr.getName(), curr.getDate());
+                    holiday.setType(type);
+                    holiday.setDescription(description);
+                    this.dates[i][j] = holiday;
                 }
             }
         }
@@ -58,7 +62,11 @@ class CalendarBuilder {
             throw new Error("Cannot build calendar without essential information.");
         }
         this.makeDates();
-        return new Calendar(this.year, this.dates);
+        const calendar = new Calendar(this.year, this.dates);
+        this.year = "";
+        this.dates = [];
+        this.firstDayName = "";
+        return calendar;
     }
     makeDates() {
         let currentDay = this.dayNames.indexOf(this.firstDayName);
@@ -67,7 +75,13 @@ class CalendarBuilder {
             const month = this.parseDate(i);
             for (let j = 0; j < this.daysPerMonth[i]; j++) {
                 const day = this.parseDate(j);
-                newMonth.push(new Day(this.dayNames[currentDay], day + "/" + month + "/" + this.year));
+                const newDay = new Day(this.dayNames[currentDay], day + "/" + month + "/" + this.year);
+                // January all days are feria judicial
+                if (i == 0) {
+                    newDay.setType(3);
+                    newDay.setDescription("Feria judicial");
+                }
+                newMonth.push(newDay);
                 currentDay++;
                 if (currentDay > 6) {
                     currentDay = 0;

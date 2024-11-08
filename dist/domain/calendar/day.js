@@ -3,6 +3,8 @@ class Day {
     constructor(aName, aDate) {
         this.name = aName;
         this.date = aDate;
+        this.type = 0;
+        this.description = "";
     }
     getName() {
         return this.name;
@@ -10,17 +12,22 @@ class Day {
     getDate() {
         return this.date;
     }
-}
-class Holiday extends Day {
-    constructor(aName, aDate, aType, aDescription) {
-        super(aName, aDate);
-        this.type = aType;
-        this.description = aDescription;
+    isWeekend() {
+        return this.getName() == "Sábado" || this.getName() == "Domingo";
+    }
+    getDay() {
+        return this.date.split("/")[0];
     }
     getType() {
         return this.type;
     }
+    setType(aType) {
+        this.type = aType;
+    }
     getDescription() {
         return this.description;
+    }
+    setDescription(aDescription) {
+        this.description = aDescription;
     }
 }

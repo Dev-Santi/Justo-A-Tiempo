@@ -1,10 +1,14 @@
 class Day {
     private name: String;
     private date: String;
+    private type: number;
+    private description: String;
 
     constructor(aName: String, aDate: String) {
         this.name = aName;
         this.date = aDate;
+        this.type = 0;
+        this.description = "";
     }
 
     getName() {
@@ -14,28 +18,28 @@ class Day {
     getDate() {
         return this.date;
     }
-}
 
-class Holiday extends Day {
-    private type: Number;
-    private description: String;
+    isWeekend() {
+        return this.getName() == "Sábado" || this.getName() == "Domingo";
+    }
 
-    constructor(
-        aName: String,
-        aDate: String,
-        aType: Number,
-        aDescription: String
-    ) {
-        super(aName, aDate);
-        this.type = aType;
-        this.description = aDescription;
+    getDay() {
+        return this.date.split("/")[0];
     }
 
     getType() {
         return this.type;
     }
 
+    setType(aType:number) {
+        this.type = aType;
+    }
+
     getDescription() {
         return this.description;
+    }
+
+    setDescription(aDescription:String) {
+        this.description = aDescription;
     }
 }

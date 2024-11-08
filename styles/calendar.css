@@ -1,0 +1,84 @@
+#calendar {
+    color: var(--clr-05);
+    height: 20rem;
+}
+
+/* YEAR */
+#calendar #year {
+    display: flex;
+    justify-content: flex-end;
+
+    opacity: .75;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+#calendar .triangle {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 10px solid var(--clr-05);
+    border-bottom: 5px solid transparent;
+    margin-right: 0.6rem;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#calendar .triangle.inverted {
+    border-right: none;
+    border-left: 10px solid var(--clr-05);
+    
+    margin-right: 0;
+    margin-left: 0.6rem;
+    margin-top: 5px;
+}
+
+/* MONTHS */
+#calendar #months {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.65rem;
+    border-bottom: 1px solid var(--clr-05);
+    padding-bottom: 0.5rem;
+}
+
+#calendar #months span {
+    cursor: pointer;
+}
+
+#calendar #months .active {
+    color: var(--clr-3);
+    font-weight: 700;
+}
+
+/* DAYS */
+#calendar #days {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-items:center;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+#calendar #days span {
+    width: fit-content;
+    padding: 0.4rem;
+    border-radius: 6px;
+}
+
+#calendar #days span.day_label {
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    padding-top: 0;
+}
+
+#calendar #days span.day.today {
+    background-color: var(--clr-3);
+    font-weight: 700;
+    color: var(--clr-100);
+}
+
+#calendar #days span.weekend {
+    opacity: .8;
+}

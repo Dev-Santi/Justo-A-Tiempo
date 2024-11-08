@@ -2,7 +2,8 @@
 #idCalcDate {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    justify-content: space-between;
+    height: 20rem;
 }
 
 #idNotificationDate,
@@ -46,3 +47,9 @@
     margin-right: 6.8rem;
 }
 
+#calcResult {
+    padding: .75rem;
+    border: 1px solid var(--clr-4);
+    border-radius: 1rem;
+    color: var(--clr-4);
+}

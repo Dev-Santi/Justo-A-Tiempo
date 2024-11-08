@@ -15,18 +15,21 @@ class Calendar {
         return this.dates;
     }
 
-    addHoliday(date: String, type: Number, description: String) {
+    // Type 0 -> dia normal, type 1 -> feriado laborable, type 2 -> feriado no laborable, type 3 -> feria judicial
+    addHoliday(date: String, type: number, description: String) {
         for (let i = 0; i < this.dates.length; i++) {
             for (let j = 0; j < this.dates[i].length; j++) {
                 let curr = this.dates[i][j];
 
                 if (curr.getDate() === date) {
-                    this.dates[i][j] = new Holiday(
+                    const holiday = new Day(
                         curr.getName(),
-                        curr.getDate(),
-                        type,
-                        description
+                        curr.getDate()
                     );
+                    holiday.setType(type);
+                    holiday.setDescription(description)
+
+                    this.dates[i][j] = holiday;
                 }
             }
         }
@@ -83,7 +86,13 @@ class CalendarBuilder {
         }
 
         this.makeDates();
-        return new Calendar(this.year, this.dates);
+        const calendar = new Calendar(this.year, this.dates);
+
+        this.year = "";
+        this.dates = [];
+        this.firstDayName = "";
+
+        return calendar;
     }
 
     private makeDates() {
@@ -95,9 +104,15 @@ class CalendarBuilder {
 
             for (let j = 0; j < this.daysPerMonth[i]; j++) {
                 const day = this.parseDate(j);
-                newMonth.push(
-                    new Day(this.dayNames[currentDay], day + "/" + month + "/" + this.year)
-                );
+                const newDay = new Day(this.dayNames[currentDay], day + "/" + month + "/" + this.year);
+
+                // January all days are feria judicial
+                if(i == 0) {
+                    newDay.setType(3);
+                    newDay.setDescription("Feria judicial")
+                }
+
+                newMonth.push(newDay);
 
                 currentDay++;
                 if (currentDay > 6) {
