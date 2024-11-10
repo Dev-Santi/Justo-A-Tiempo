@@ -82,3 +82,47 @@
 #calendar #days span.weekend {
     opacity: .8;
 }
+
+#calendar #days span.dateCalculated {
+    background-color: var(--clr-7);
+    animation: animDate 1s forwards;
+}
+
+#calendar #days span.dateCalculated.finalDateCalculated {
+    font-weight: 900;
+}
+
+#calendar #days span.dateSkipped {
+    background-color: var(--clr-5);
+    animation: animSkippedDate 1s forwards;
+}
+
+@keyframes animDate{
+    0% {
+        background-color: white;
+    }
+
+    30% {
+        color: white;
+    }
+
+    100% {
+        color: white;
+        background-color: var(--clr-7);
+    }
+}
+
+@keyframes animSkippedDate{
+    0% {
+        background-color: white;
+    }
+
+    30% {
+        color: white;
+    }
+
+    100% {
+        color: white;
+        background-color: var(--clr-5);
+    }
+}

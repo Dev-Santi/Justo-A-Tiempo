@@ -1,6 +1,7 @@
 window.addEventListener("load", program);
 
 const calendarState = {year: 0}
+let currentDatesCalculated : Array<Day>;
 
 function program() {
     // Menu behavior on mobile
@@ -155,7 +156,6 @@ function changeMonth(month:number) {
     const daysContainer:any = document.getElementById("days");
     const currentCalendar = calendars[calendarState.year]
     
-
     for (let i = daysContainer.children.length -1 ; i >= 0; i--) {
         if(!daysContainer.children[i].className.includes("day_label")) {
             daysContainer.removeChild(daysContainer.children[i]);
@@ -178,7 +178,9 @@ function changeMonth(month:number) {
         daysContainer.appendChild(document.createElement("span"))
     }
 
+    let startedToPaintDates = false;
     currentCalendar.getDates()[month].forEach((day) => {
+
         const newDay = document.createElement("span");
         newDay.classList.add("day")
         
@@ -188,6 +190,23 @@ function changeMonth(month:number) {
 
         if(day.isWeekend()) {
             newDay.classList.add("weekend")
+        }
+
+        for (let i = 0; i < currentDatesCalculated.length; i++) {
+            if(currentDatesCalculated[i].getDate() == day.getDate()) {
+                startedToPaintDates = true;
+                newDay.classList.add("dateCalculated");
+
+                if(i == currentDatesCalculated.length - 1) {
+                    newDay.classList.add("finalDateCalculated");
+                    startedToPaintDates = false;
+                }
+
+            }
+        }
+
+        if(startedToPaintDates && !newDay.classList.contains("dateCalculated")){
+            newDay.classList.add("dateSkipped")
         }
 
         newDay.textContent = day.getDay();
@@ -235,12 +254,42 @@ function setReadyToCalcDate() {
         if(notificationDate.length < 10) {
             alert("Fecha de notificación inválida");
         }
-        console.log(term);
         
         if(term <= 0) {
             alert("El plazo debe ser mayor a cero");
+            return;
         }
+        
+        let dateParsed = notificationDate.split("-");
+        const date = dateParsed[2] + "/" + dateParsed[1] + "/" + dateParsed[0];
+        const datesResult:Array<Day> = calcDate(date,category,term);
+        currentDatesCalculated = datesResult;
+
+        const calcResultInPage: any = document.getElementById("calcResultDate");
+        calcResultInPage.textContent = datesResult[datesResult.length - 1].getDate();
+
+        const animation = document.getElementById("calcResult");
+        animation?.classList.toggle("playAnimation");
+        !animation?.classList.contains("green") && animation?.classList.add("green");
+        setTimeout(()=> animation?.classList.toggle("playAnimation"), 320)
+
+        changeMonth(parseInt(dateParsed[1]) - 1);
     })
+}
+
+function reloadFromCalcDate() {
+
+    for (let i = 0; i < calendars[0].getDates().length; i++) {
+        for (let j = 0; j < calendars[0].getDates()[i].length; j++) {
+            
+        }
+    }
+
+    for (let i = 0; i < calendars[1].getDates().length; i++) {
+        for (let j = 0; j < calendars[1].getDates()[i].length; j++) {
+
+        }
+    }
 }
 
 function getToday():any {

@@ -9,3 +9,8 @@
 .not_visible {
     opacity: 0;
 }
+
+.green {
+    color: var(--clr-7) !important;
+    border: 2px solid var(--clr-7) !important;
+}

@@ -1,6 +1,7 @@
 "use strict";
 window.addEventListener("load", program);
 const calendarState = { year: 0 };
+let currentDatesCalculated;
 function program() {
     // Menu behavior on mobile
     setReadyTheMobileNavigation();
@@ -146,6 +147,7 @@ function changeMonth(month) {
         }
         daysContainer.appendChild(document.createElement("span"));
     }
+    let startedToPaintDates = false;
     currentCalendar.getDates()[month].forEach((day) => {
         const newDay = document.createElement("span");
         newDay.classList.add("day");
@@ -154,6 +156,19 @@ function changeMonth(month) {
         }
         if (day.isWeekend()) {
             newDay.classList.add("weekend");
+        }
+        for (let i = 0; i < currentDatesCalculated.length; i++) {
+            if (currentDatesCalculated[i].getDate() == day.getDate()) {
+                startedToPaintDates = true;
+                newDay.classList.add("dateCalculated");
+                if (i == currentDatesCalculated.length - 1) {
+                    newDay.classList.add("finalDateCalculated");
+                    startedToPaintDates = false;
+                }
+            }
+        }
+        if (startedToPaintDates && !newDay.classList.contains("dateCalculated")) {
+            newDay.classList.add("dateSkipped");
         }
         newDay.textContent = day.getDay();
         daysContainer.appendChild(newDay);
@@ -192,11 +207,32 @@ function setReadyToCalcDate() {
         if (notificationDate.length < 10) {
             alert("Fecha de notificación inválida");
         }
-        console.log(term);
         if (term <= 0) {
             alert("El plazo debe ser mayor a cero");
+            return;
         }
+        let dateParsed = notificationDate.split("-");
+        const date = dateParsed[2] + "/" + dateParsed[1] + "/" + dateParsed[0];
+        const datesResult = calcDate(date, category, term);
+        currentDatesCalculated = datesResult;
+        const calcResultInPage = document.getElementById("calcResultDate");
+        calcResultInPage.textContent = datesResult[datesResult.length - 1].getDate();
+        const animation = document.getElementById("calcResult");
+        animation === null || animation === void 0 ? void 0 : animation.classList.toggle("playAnimation");
+        !(animation === null || animation === void 0 ? void 0 : animation.classList.contains("green")) && (animation === null || animation === void 0 ? void 0 : animation.classList.add("green"));
+        setTimeout(() => animation === null || animation === void 0 ? void 0 : animation.classList.toggle("playAnimation"), 320);
+        changeMonth(parseInt(dateParsed[1]) - 1);
     });
+}
+function reloadFromCalcDate() {
+    for (let i = 0; i < calendars[0].getDates().length; i++) {
+        for (let j = 0; j < calendars[0].getDates()[i].length; j++) {
+        }
+    }
+    for (let i = 0; i < calendars[1].getDates().length; i++) {
+        for (let j = 0; j < calendars[1].getDates()[i].length; j++) {
+        }
+    }
 }
 function getToday() {
     return new Date().toLocaleDateString("es-UY", { day: "2-digit", month: "2-digit", year: "numeric" });
