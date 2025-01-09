@@ -90,30 +90,56 @@
          <!-- Current page content -->
          <section id="idCurrentPage" class="current_page">
             <div class="card">
-               <h2>Calcular una plazo</h2>
+               <h2>Calcular un plazo</h2>
 
-               <div class="card_content">
-                  <form id="idCalcDate">
-                     <div class="align_inputs_with_labels">
-                        <label for="idNotificationDate">Fecha de notificación:</label>
-                        <input id="idNotificationDate" type="date" />
-                     </div>
-                     <div class="align_inputs_with_labels">
-                        <label for="idCategory">Categoría:</label>
-                        <select id="idCategory">
-                           <option id="a" value="0">Laboral</option>
-                           <option value="1">Civil</option>
-                           <option value="2">Administrativo</option>
-                        </select>
-                        <img class="arrow_icon" src="./assets/icons/Arrow 1.png" alt="" />
-                     </div>
-                     <div class="align_inputs_with_labels">
-                        <label for="idTerm">Plazo:</label>
-                        <input id="idTerm" type="number" value="15" max="999" min="0" id="idTerm" />
-                        <span id="idTermText" class="day_text ml_1">días</span>
-                     </div>
-                     <button id="idCalcDateBtn">Calcular</button>
-                     <div id="calcResult"><span>Resultado -> </span><span id="calcResultDate">--/--/--</span></div>
+               <div id="calcContentContainer" class="card_content split_flex">
+                  <div>
+                     <form id="idCalcDate">
+                        <div class="align_inputs_with_labels">
+                           <label for="idNotificationDate">Fecha de notificación:</label>
+                           <input id="idNotificationDate" type="date" />
+                        </div>
+                        <div class="align_inputs_with_labels">
+                           <label for="idCategory">Categoría:</label>
+                           <select id="idCategory">
+                              <option value="0">Laboral</option>
+                              <option value="1">Civil</option>
+                              <option value="2">Personalizado</option>
+                           </select>
+                           <img class="arrow_icon" src="./assets/icons/Arrow 1.png" alt="" />
+                        </div>
+                        <div id="idTermContainer" class="align_inputs_with_labels termDisabled">
+                           <label for="idTerm">Plazo:</label>
+                           <input id="idTerm" type="number" value="15" max="999" min="0" id="idTerm" />
+                           <span id="idTermText" class="day_text ml_1">días</span>
+                        </div>
+                        <button id="idCalcDateBtn">Calcular</button>
+                        <div id="calcResult"><span>Resultado -> </span><span id="calcResultDate">--/--/--</span></div>
+                     </form>
+                  </div>
+
+                  <form id="customFilters" class="custom_filters">
+                     <span>Seleccione las fechas en las que se suspende el cómputo:</span>
+                     <br />
+                     <span>
+                        <input type="checkbox" name="feria" id="idFeriaCustomFilter" checked />
+                        <label for="idFeriaCustomFilter">Ferias judiciales</label>
+                     </span>
+
+                     <span>
+                        <input type="checkbox" name="turismo" id="idTurismoCustomFilter" checked />
+                        <label for="idTurismoCustomFilter">Semana de turismo</label>
+                     </span>
+
+                     <span>
+                        <input type="checkbox" name="carnaval" id="idCarnavalCustomFilter" checked />
+                        <label for="idCarnavalCustomFilter">Lunes y martes de Carnaval</label>
+                     </span>
+
+                     <span>
+                        <input type="checkbox" name="feriado" id="idFeriadoCustomFilter" checked />
+                        <label for="idFeriadoCustomFilter">Feriados laborables y no laborables</label>
+                     </span>
                   </form>
                </div>
             </div>
@@ -121,11 +147,18 @@
                <h2 class="not_visible">Resultado:</h2>
                <div class="card_content">
                   <div id="calendar">
-                     <div id="year">
-                        <span id="year_left" class="triangle"></span>
-                        <span id="year_label"></span>
-                        <span id="year_right" class="triangle inverted"></span>
+                     <div id="calendarTop">
+                        <div id="calendarInfo">
+                           <span><span class="judicial_square"></span>Feria Judicial</span>
+                           <span><span class="holiday_square"></span>Feriado</span>
+                        </div>
+                        <div id="year">
+                           <span id="year_left" class="triangle"></span>
+                           <span id="yearLabel"></span>
+                           <span id="year_right" class="triangle inverted"></span>
+                        </div>
                      </div>
+
                      <div id="months">
                         <span>Ene</span>
                         <span>Feb</span>
@@ -140,15 +173,16 @@
                         <span>Nov</span>
                         <span>Dic</span>
                      </div>
-                     <div id="days">
-                        <span class="day_label">Lun</span>
-                        <span class="day_label">Mar</span>
-                        <span class="day_label">Mie</span>
-                        <span class="day_label">Jue</span>
-                        <span class="day_label">Vie</span>
-                        <span class="day_label">Sab</span>
-                        <span class="day_label">Dom</span>
+                     <div id="dayLabels">
+                        <span>Lun</span>
+                        <span>Mar</span>
+                        <span>Mie</span>
+                        <span>Jue</span>
+                        <span>Vie</span>
+                        <span>Sab</span>
+                        <span>Dom</span>
                      </div>
+                     <div id="days"></div>
                   </div>
                </div>
             </div>
@@ -159,13 +193,15 @@
       <div id="idEffectsContainer"></div>
 
       <!-- Domain scripts -->
-      <script src="./dist/domain/calendar/day.js"></script>
-      <script src="./dist/domain/calendar/calendar.js"></script>
+      <script src="./dist/domain/calendar/Day.js"></script>
+      <script src="./dist/domain/calendar/Calendar.js"></script>
+      <script src="./dist/domain/calendar/CalendarBuilder.js"></script>
       <script src="./dist/domain/main.js"></script>
       <script src="./dist/domain/tests.js"></script>
 
       <!-- Views scripts -->
       <script src="./dist/view/main.js"></script>
+      <script src="./dist/view/calendar.js"></script>
       <!-- End of scripts -->
    </body>
 </html>

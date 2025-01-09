@@ -1,8 +1,5 @@
 window.addEventListener("load", program);
 
-const calendarState = {year: 0}
-let currentDatesCalculated : Array<Day>;
-
 function program() {
     // Menu behavior on mobile
     setReadyTheMobileNavigation();
@@ -14,11 +11,8 @@ function program() {
     setDefaultValueOnCalcDate();
     setTextInTermInput();
 
-    // Calendar
-    instanceHomeCalendar();
-    readyToChangeMonth();
-    setReadyTochangeYear();
-    setReadyToCalcDate();
+    //  Show custom filters when selected
+    showCustomFiltersWhenSelected();
 }
 
 function setReadyTheMobileNavigation() {
@@ -102,196 +96,27 @@ function updateTextInTermInput(termInput: any, termText: any) {
     }
 }
 
-function instanceHomeCalendar() {
-    const today = getToday();
-    const currentCalendar = today.split("/")[2] == "2024" ? calendar2024 : calendar2025
-    const daysContainer: any = document.getElementById("days");
+function showCustomFiltersWhenSelected() {
+    const options: any = document.getElementById("idCategory");
+    const isSelected = options.value == 2;
 
-    // Add spaces until get to first day
-    const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
-    const firstDay = currentCalendar.getDates()[today.split("/")[1] - 1][0].getName();
-    for (let i = 0; i < days.length; i++) {
-        if(firstDay == days[i]) {
-            break;
-        }
-        daysContainer.appendChild(document.createElement("span"))
+    const filters: HTMLElement | null = document.getElementById("customFilters");
+    const container: HTMLElement | null = document.getElementById("calcContentContainer");
+
+    if (isSelected) {
+        filters?.classList.add("active");
+        container?.classList.add("active");
     }
 
-    currentCalendar.getDates()[today.split("/")[1] - 1].forEach((day) => {
-        const newDay = document.createElement("span");
-        newDay.classList.add("day")
-        
-        if(day.getDate() == today) {
-            newDay.classList.add("today")
+    options.addEventListener("click", (e: any) => {
+        const isSelected = options.value == 2;
+
+        if (isSelected) {
+            filters?.classList.add("active");
+            container?.classList.add("active");
+        } else {
+            filters?.classList.remove("active");
+            container?.classList.remove("active");
         }
-
-        if(day.isWeekend()) {
-            newDay.classList.add("weekend")
-        }
-
-        newDay.textContent = day.getDay();
-
-        daysContainer.appendChild(newDay)
-    })
-
-    const monthsContainer = document.getElementById("months");
-    monthsContainer?.children[today.split("/")[1] - 1].classList.add("active");
-
-    const yearLabel:any = document.getElementById("year_label")
-    yearLabel.textContent = today.split("/")[2];
-}
-
-function readyToChangeMonth() {
-    const monthsContainer:any = document.getElementById("months");
-
-    for (let i = 0; i < monthsContainer.children.length; i++) {
-        monthsContainer.children[i].addEventListener("click",() => {
-            monthsContainer.children[i].classList.add("active");
-            changeMonth(i);
-        })
-    }
-}
-
-function changeMonth(month:number) {
-    const daysContainer:any = document.getElementById("days");
-    const currentCalendar = calendars[calendarState.year]
-    
-    for (let i = daysContainer.children.length -1 ; i >= 0; i--) {
-        if(!daysContainer.children[i].className.includes("day_label")) {
-            daysContainer.removeChild(daysContainer.children[i]);
-        }
-    }
-
-    const monthsContainer:any = document.getElementById("months"); 
-    for (let i = 0; i < monthsContainer.children.length; i++) {
-        monthsContainer.children[i].classList.remove("active");
-    }
-    monthsContainer.children[month].classList.add("active");
-
-    // Add spaces until get to first day
-    const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
-    const firstDay = currentCalendar.getDates()[month][0].getName();
-    for (let i = 0; i < days.length; i++) {
-        if(firstDay == days[i]) {
-            break;
-        }
-        daysContainer.appendChild(document.createElement("span"))
-    }
-
-    let startedToPaintDates = false;
-    currentCalendar.getDates()[month].forEach((day) => {
-
-        const newDay = document.createElement("span");
-        newDay.classList.add("day")
-        
-        if(day.getDate() == getToday()) {
-            newDay.classList.add("today")
-        }
-
-        if(day.isWeekend()) {
-            newDay.classList.add("weekend")
-        }
-
-        for (let i = 0; i < currentDatesCalculated.length; i++) {
-            if(currentDatesCalculated[i].getDate() == day.getDate()) {
-                startedToPaintDates = true;
-                newDay.classList.add("dateCalculated");
-
-                if(i == currentDatesCalculated.length - 1) {
-                    newDay.classList.add("finalDateCalculated");
-                    startedToPaintDates = false;
-                }
-
-            }
-        }
-
-        if(startedToPaintDates && !newDay.classList.contains("dateCalculated")){
-            newDay.classList.add("dateSkipped")
-        }
-
-        newDay.textContent = day.getDay();
-
-        daysContainer.appendChild(newDay)
-    })
-}
-
-function setReadyTochangeYear() {
-    const yearLeft = document.getElementById("year_left")
-    const yearRight = document.getElementById("year_right")
-
-    yearLeft?.addEventListener("click",()=>{
-        if(calendarState.year != 0) {
-            calendarState.year--;
-            changeMonth(11);
-            const yearLabel:any = document.getElementById("year_label")
-            yearLabel.textContent = calendars[calendarState.year].getYear();
-        }
-    })
-
-    yearRight?.addEventListener("click",()=>{
-        if(calendarState.year != calendars.length - 1) {
-            calendarState.year++;
-            changeMonth(0);
-            const yearLabel:any = document.getElementById("year_label");
-            yearLabel.textContent = calendars[calendarState.year].getYear();
-        }
-    })
-}
-
-function setReadyToCalcDate() {
-    const notificationDateElement:any = document.getElementById("idNotificationDate");
-    const categoryElement:any = document.getElementById("idCategory");
-    const termElement:any = document.getElementById("idTerm");
-    const calcBtnElement:any = document.getElementById("idCalcDateBtn");
-
-    calcBtnElement?.addEventListener("click",(e:Event)=> {
-        e.preventDefault();
-
-        const notificationDate = notificationDateElement.value;
-        const category = categoryElement.value;
-        const term = termElement.value;
-
-        if(notificationDate.length < 10) {
-            alert("Fecha de notificación inválida");
-        }
-        
-        if(term <= 0) {
-            alert("El plazo debe ser mayor a cero");
-            return;
-        }
-        
-        let dateParsed = notificationDate.split("-");
-        const date = dateParsed[2] + "/" + dateParsed[1] + "/" + dateParsed[0];
-        const datesResult:Array<Day> = calcDate(date,category,term);
-        currentDatesCalculated = datesResult;
-
-        const calcResultInPage: any = document.getElementById("calcResultDate");
-        calcResultInPage.textContent = datesResult[datesResult.length - 1].getDate();
-
-        const animation = document.getElementById("calcResult");
-        animation?.classList.toggle("playAnimation");
-        !animation?.classList.contains("green") && animation?.classList.add("green");
-        setTimeout(()=> animation?.classList.toggle("playAnimation"), 320)
-
-        changeMonth(parseInt(dateParsed[1]) - 1);
-    })
-}
-
-function reloadFromCalcDate() {
-
-    for (let i = 0; i < calendars[0].getDates().length; i++) {
-        for (let j = 0; j < calendars[0].getDates()[i].length; j++) {
-            
-        }
-    }
-
-    for (let i = 0; i < calendars[1].getDates().length; i++) {
-        for (let j = 0; j < calendars[1].getDates()[i].length; j++) {
-
-        }
-    }
-}
-
-function getToday():any {
-    return new Date().toLocaleDateString("es-UY", {day:"2-digit",month: "2-digit", year: "numeric"});
+    });
 }

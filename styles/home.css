@@ -38,6 +38,19 @@
     pointer-events: none;
 }
 
+.custom_filters {
+    display: none;
+    flex-direction: column;
+    gap: .5rem;
+    color: var(--clr-4);
+    opacity: 0;
+}
+
+.custom_filters.active {
+    display: flex;
+    animation: slide-in 1s forwards;
+    opacity: 1;
+}
 
 .day_text.ml_1 {
     margin-right: 7.5rem;
@@ -69,5 +82,25 @@
 
     100% {
         outline: 0px solid var(--clr-7);
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }

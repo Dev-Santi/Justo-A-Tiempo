@@ -3,7 +3,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 3.25rem;
+    gap: 6.5rem;
+}
+
+.split_flex {
+    display: block;
+    gap: 2rem;
+}
+
+.split_flex.active {
+    display: flex;
 }
 
 .not_visible {

@@ -41,10 +41,24 @@ html {
     --clr-5: #fe5c73;
     --clr-6: #343c6a;
     --clr-7: #42b540;
+    --clr-holiday: #ff8000;
+    --clr-judicial: #65c0c0;
     /* sizes */
     --text-sm: 1.125rem;
     --text-lg: 1.375rem;
     --text-xl: 1.75rem;
+
+    /* Dark mode */
+    /* --clr-100: #181a1b;
+    --clr-0: #1c1f20;
+    --clr-05: #c4c4c4;
+    --clr-1: #22334c;
+    --clr-2: #22334c;
+    --clr-3: #2d60ff;
+    --clr-4: #718ebf;
+    --clr-5: #fe5c73;
+    --clr-6: #9db2cf;
+    --clr-7: #42b540;  */
 }
 
 body {
@@ -221,7 +235,8 @@ header.main_panel .header_icons .has-notification path {
 }
 
 .card button {
-    color: var(--clr-0);
+    color: white;
+    font-weight: 500;
     background-color: var(--clr-3);
     padding: .75rem;
     margin-top: 1rem;
@@ -230,6 +245,11 @@ header.main_panel .header_icons .has-notification path {
 
 .card button:hover {
     opacity: .75;
+}
+
+.termDisabled {
+    opacity: .6;
+    pointer-events: none;
 }
 
 /* Mobile ajusts */
