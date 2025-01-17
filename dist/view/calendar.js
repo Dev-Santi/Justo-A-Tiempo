@@ -95,6 +95,9 @@ function loadPage(state) {
             if (state.calculatedDays[j].getDate().getTime() == state.currentPage[i].getDate().getTime()) {
                 newDay.classList.add("calculated");
             }
+            if (j == state.calculatedDays.length - 1 && state.calculatedDays[j].getDate().getTime() == state.currentPage[i].getDate().getTime()) {
+                newDay.classList.add("finalDateCalculated");
+            }
         }
         daysContainer === null || daysContainer === void 0 ? void 0 : daysContainer.appendChild(newDay);
     }

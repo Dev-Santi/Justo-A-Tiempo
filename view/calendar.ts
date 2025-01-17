@@ -33,6 +33,7 @@ function calendar() {
     calcButton.addEventListener("click", (e:Event) => {
         e.preventDefault();
         calcTermDate();
+        
         load();
     });
 
@@ -116,6 +117,9 @@ function loadPage(state: any) {
         for (let j = 0; j < state.calculatedDays.length; j++) {
             if(state.calculatedDays[j].getDate().getTime() == state.currentPage[i].getDate().getTime()) {
                 newDay.classList.add("calculated");
+            }
+            if(j == state.calculatedDays.length -1 && state.calculatedDays[j].getDate().getTime() == state.currentPage[i].getDate().getTime()) {
+                newDay.classList.add("finalDateCalculated");
             }
         }
 

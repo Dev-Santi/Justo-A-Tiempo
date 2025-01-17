@@ -96,7 +96,7 @@
                   <div>
                      <form id="idCalcDate">
                         <div class="align_inputs_with_labels">
-                           <label for="idNotificationDate">Fecha de notificación:</label>
+                           <label id="idLabelNoti" for="idNotificationDate">Fecha:</label>
                            <input id="idNotificationDate" type="date" />
                         </div>
                         <div class="align_inputs_with_labels">
@@ -106,7 +106,7 @@
                               <option value="1">Civil</option>
                               <option value="2">Personalizado</option>
                            </select>
-                           <img class="arrow_icon" src="./assets/icons/Arrow 1.png" alt="" />
+                           <img id="idCatArrow" class="arrow_icon" src="./assets/icons/Arrow 1.png" alt="" />
                         </div>
                         <div id="idTermContainer" class="align_inputs_with_labels termDisabled">
                            <label for="idTerm">Plazo:</label>
@@ -138,7 +138,12 @@
 
                      <span>
                         <input type="checkbox" name="feriado" id="idFeriadoCustomFilter" checked />
-                        <label for="idFeriadoCustomFilter">Feriados laborables y no laborables</label>
+                        <label for="idFeriadoCustomFilter">Feriados restantes</label>
+                     </span>
+
+                     <span>
+                        <input type="checkbox" name="finde" id="idFindeCustomFilter" checked />
+                        <label for="idFindeCustomFilter">Sábados y domingos</label>
                      </span>
                   </form>
                </div>

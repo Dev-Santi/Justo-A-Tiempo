@@ -23,3 +23,10 @@
     color: var(--clr-7) !important;
     border: 2px solid var(--clr-7) !important;
 }
+
+/* 63.9375 == 1023px / desktop starts at 1024px */
+@media (max-width: 63.9375rem) {
+    .align_inputs_with_labels {
+        gap: 1rem;
+    }
+}

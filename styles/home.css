@@ -61,6 +61,10 @@
 }
 
 #calcResult {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
     padding: .75rem;
     border: 2px solid var(--clr-4);
     border-radius: 1rem;
@@ -95,12 +99,14 @@
     }
 }
 
-@keyframes slide-out {
-    0% {
-        opacity: 1;
+
+/* 63.9375 == 1023px / desktop starts at 1024px */
+@media (max-width: 63.9375rem) {
+    #idCategory {
+        appearance: auto;
     }
 
-    100% {
-        opacity: 0;
+    #idCatArrow {
+        display: none;
     }
 }

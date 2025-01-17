@@ -10,6 +10,24 @@ function program() {
     setTextInTermInput();
     //  Show custom filters when selected
     showCustomFiltersWhenSelected();
+    // Patchs
+    let width = window.innerWidth;
+    let label = document.getElementById("idLabelNoti");
+    if (width < 1024) {
+        label.textContent = "Fecha:";
+    }
+    else {
+        label.textContent = "Fecha de notificación:";
+    }
+    window.addEventListener("resize", () => {
+        width = window.innerWidth;
+        if (width < 1024) {
+            label.textContent = "Fecha:";
+        }
+        else {
+            label.textContent = "Fecha de notificación:";
+        }
+    });
 }
 function setReadyTheMobileNavigation() {
     const menu = document.getElementById("idAsideMenu");

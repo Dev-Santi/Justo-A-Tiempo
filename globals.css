@@ -41,6 +41,7 @@ html {
     --clr-5: #fe5c73;
     --clr-6: #343c6a;
     --clr-7: #42b540;
+    --clr-8: #53e130c9;
     --clr-holiday: #ff8000;
     --clr-judicial: #65c0c0;
     /* sizes */
@@ -248,8 +249,17 @@ header.main_panel .header_icons .has-notification path {
 }
 
 .termDisabled {
-    opacity: .6;
+    opacity: .35;
     pointer-events: none;
+}
+
+.play_green {
+    animation: play-green 700ms linear 80ms forwards;
+}
+
+.withResult {
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 /* Mobile ajusts */
@@ -274,6 +284,8 @@ header.main_panel .header_icons .has-notification path {
     #idCurrentPage {
         flex-direction: column;
         align-items: center;
+        padding: 1.812rem 1.45rem;
+        gap: 0;
     }
 
     #idHeaderSettingsBtn {
@@ -300,6 +312,11 @@ header.main_panel .header_icons .has-notification path {
     .current_page .card h2 {
         justify-content: center;
     }
+
+    .card_content {
+        min-width: auto;
+        padding: 1.2rem;
+    }
 }
 
 /*--- Animations ---*/
@@ -324,5 +341,20 @@ header.main_panel .header_icons .has-notification path {
 
     100% {
         transform: rotateZ(360deg);
+    }
+}
+
+@keyframes play-green {
+    0% {
+
+    }
+
+    50% {
+        color: #44d742;
+        transform: scale(1.03);
+    }
+
+    100% {
+        color: var(--clr-4);
     }
 }
