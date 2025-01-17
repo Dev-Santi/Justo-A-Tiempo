@@ -153,12 +153,18 @@ class Calendar {
 
                         this.state.calculatedDays.push(this.getYears()[i][j]);
                     } else if (category == "2") {
-                        const filters = [
-                            document.getElementById("idFeriaCustomFilter")?.checked,
-                            document.getElementById("idTurismoCustomFilter")?.checked,
-                            document.getElementById("idCarnavalCustomFilter")?.checked,
-                            document.getElementById("idFeriadoCustomFilter")?.checked,
-                            document.getElementById("idFindeCustomFilter")?.checked,
+                        const feria:any = document.getElementById("idFeriaCustomFilter")
+                        const turi:any = document.getElementById("idTurismoCustomFilter")
+                        const car:any = document.getElementById("idCarnavalCustomFilter")
+                        const fer:any = document.getElementById("idFeriadoCustomFilter")
+                        const fin:any = document.getElementById("idFindeCustomFilter")
+
+                        const filters = [ 
+                            feria.checked,
+                            turi.checked,
+                            car.checked,
+                            fer.checked, 
+                            fin.checked,
                         ];
 
                         if (

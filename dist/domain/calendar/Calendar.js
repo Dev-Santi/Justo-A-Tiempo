@@ -90,7 +90,6 @@ class Calendar {
         return page;
     }
     calculateDates(date, category, term) {
-        var _a, _b, _c, _d, _e;
         this.state.calculatedDays = [];
         let count = term;
         let found = false;
@@ -113,12 +112,17 @@ class Calendar {
                         this.state.calculatedDays.push(this.getYears()[i][j]);
                     }
                     else if (category == "2") {
+                        const feria = document.getElementById("idFeriaCustomFilter");
+                        const turi = document.getElementById("idTurismoCustomFilter");
+                        const car = document.getElementById("idCarnavalCustomFilter");
+                        const fer = document.getElementById("idFeriadoCustomFilter");
+                        const fin = document.getElementById("idFindeCustomFilter");
                         const filters = [
-                            (_a = document.getElementById("idFeriaCustomFilter")) === null || _a === void 0 ? void 0 : _a.checked,
-                            (_b = document.getElementById("idTurismoCustomFilter")) === null || _b === void 0 ? void 0 : _b.checked,
-                            (_c = document.getElementById("idCarnavalCustomFilter")) === null || _c === void 0 ? void 0 : _c.checked,
-                            (_d = document.getElementById("idFeriadoCustomFilter")) === null || _d === void 0 ? void 0 : _d.checked,
-                            (_e = document.getElementById("idFindeCustomFilter")) === null || _e === void 0 ? void 0 : _e.checked,
+                            feria.checked,
+                            turi.checked,
+                            car.checked,
+                            fer.checked,
+                            fin.checked,
                         ];
                         if (this.getYears()[i][j].getDescription().includes("Feria") &&
                             filters[0]) {
