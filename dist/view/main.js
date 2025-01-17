@@ -108,7 +108,7 @@ function showCustomFiltersWhenSelected() {
         filters === null || filters === void 0 ? void 0 : filters.classList.add("active");
         container === null || container === void 0 ? void 0 : container.classList.add("active");
     }
-    options.addEventListener("click", (e) => {
+    options.addEventListener("change", (e) => {
         const isSelected = options.value == 2;
         if (isSelected) {
             filters === null || filters === void 0 ? void 0 : filters.classList.add("active");

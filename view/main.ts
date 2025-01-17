@@ -128,7 +128,7 @@ function showCustomFiltersWhenSelected() {
         container?.classList.add("active");
     }
 
-    options.addEventListener("click", (e: any) => {
+    options.addEventListener("change", (e: any) => {
         const isSelected = options.value == 2;
 
         if (isSelected) {
