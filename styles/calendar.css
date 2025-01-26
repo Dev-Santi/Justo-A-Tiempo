@@ -90,6 +90,7 @@
 #calendar #months .active {
     color: var(--clr-3);
     font-weight: 700;
+    text-decoration: underline;
 }
 
 /* DAYS */
@@ -148,7 +149,6 @@
 
 #calendar #days span.day.calculated.finalDateCalculated {
     animation: lastDay 380ms ease-in-out 100ms forwards;
-
 }
 
 #calendar #days span.dateSkipped {
@@ -169,6 +169,21 @@
 
 #calcResultDate {
     display: flex;
+    align-items: center;
+}
+
+#idReminderIcon {
+    margin-left: .78rem;
+    transform: scale(.9); 
+    cursor: pointer;
+}
+
+#idCalendar {
+    transform: scale(.9);
+}
+
+#idCopy {
+    transform: scale(.9);
 }
 
 #calcResultDate img:hover {
@@ -246,6 +261,10 @@
         display: flex;
         gap: .6rem;
         font-size: 0.78rem;
+    }
+
+    #idCopy {
+       display: none;
     }
 
     #calcContentContainer {

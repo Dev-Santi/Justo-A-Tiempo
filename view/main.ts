@@ -23,7 +23,6 @@ function program() {
         label.textContent = "Fecha de notificación:";
     }
 
-
     window.addEventListener("resize", () => {
         width = window.innerWidth;
 
@@ -33,6 +32,10 @@ function program() {
             label.textContent = "Fecha de notificación:";
         }
     });
+
+    document.getElementById("idNightMode")?.addEventListener("click",()=> {
+        document.getElementsByTagName("html")[0].classList.toggle("dark")
+    })
 }
 
 function setReadyTheMobileNavigation() {
@@ -54,22 +57,29 @@ function setReadyToDisplayDevelopmentMessage() {
 
     for (let i = 0; i < onDevelopmentElements.length && effectsContainer; i++) {
         onDevelopmentElements[i].addEventListener("click", () => {
-            const developMessage = document.createElement("div");
-            const icon = document.createElement("img");
+            const developMessage = createMessage("development_message","./assets/icons/settings.svg","En desarrollo")
 
-            icon.src = "./assets/icons/settings.svg";
-            icon.alt = "Un ícono irrelevante";
-
-            developMessage.innerText = "En desarrollo";
-            developMessage.classList.add("development_message");
-            developMessage.appendChild(icon);
             effectsContainer.appendChild(developMessage);
-
-            setTimeout(() => {
-                developMessage.remove();
-            }, 4000);
         });
     }
+}
+
+function createMessage(className:string, src:string, message:string) {
+    const developMessage = document.createElement("div");
+    const icon = document.createElement("img");
+
+    icon.src = src;
+    icon.alt = "Un ícono irrelevante";
+
+    developMessage.innerText = message;
+    developMessage.classList.add(className);
+    developMessage.appendChild(icon);
+
+    setTimeout(() => {
+        developMessage.remove();
+    }, 4000);
+
+    return developMessage;
 }
 
 function setDefaultValueOnCalcDate() {

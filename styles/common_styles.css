@@ -24,9 +24,22 @@
     border: 2px solid var(--clr-7) !important;
 }
 
+.green_color {
+    color: rgb(55, 214, 55);
+}
+
+.active.green_color {
+    color: rgb(4, 182, 4) !important;
+    font-weight: 900;
+}
+
 /* 63.9375 == 1023px / desktop starts at 1024px */
 @media (max-width: 63.9375rem) {
     .align_inputs_with_labels {
         gap: 1rem;
+    }
+
+    .active.green_color {
+        transform: scale(1);
     }
 }

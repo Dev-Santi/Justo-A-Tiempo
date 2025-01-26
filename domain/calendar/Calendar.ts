@@ -254,6 +254,20 @@ class Calendar {
         });
         resultElement.appendChild(calendarIcon);
 
+        // add to reminder btn
+        // const reminderIcon = document.createElement("img");
+        // reminderIcon.src = "./assets/icons/campana.svg";
+        // reminderIcon.alt = "Botón para generar recordatorio";
+        // reminderIcon.id = "idReminderIcon";
+        // reminderIcon.addEventListener("click", () => {
+        //     navigator.clipboard.writeText(resultElement.textContent);
+        //     reminderIcon.classList.toggle("playAnimation");
+        //     setTimeout(() => {
+        //         reminderIcon.classList.toggle("playAnimation");
+        //     }, 400);
+        // });
+        // resultElement.appendChild(reminderIcon);
+
         resultElement.classList.add("withResult");
     }
 

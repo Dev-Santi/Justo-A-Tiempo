@@ -1,6 +1,7 @@
 "use strict";
 window.addEventListener("load", program);
 function program() {
+    var _a;
     // Menu behavior on mobile
     setReadyTheMobileNavigation();
     // Not done yet message
@@ -28,6 +29,9 @@ function program() {
             label.textContent = "Fecha de notificación:";
         }
     });
+    (_a = document.getElementById("idNightMode")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
+        document.getElementsByTagName("html")[0].classList.toggle("dark");
+    });
 }
 function setReadyTheMobileNavigation() {
     const menu = document.getElementById("idAsideMenu");
@@ -45,19 +49,23 @@ function setReadyToDisplayDevelopmentMessage() {
     const effectsContainer = document.getElementById("idEffectsContainer");
     for (let i = 0; i < onDevelopmentElements.length && effectsContainer; i++) {
         onDevelopmentElements[i].addEventListener("click", () => {
-            const developMessage = document.createElement("div");
-            const icon = document.createElement("img");
-            icon.src = "./assets/icons/settings.svg";
-            icon.alt = "Un ícono irrelevante";
-            developMessage.innerText = "En desarrollo";
-            developMessage.classList.add("development_message");
-            developMessage.appendChild(icon);
+            const developMessage = createMessage("development_message", "./assets/icons/settings.svg", "En desarrollo");
             effectsContainer.appendChild(developMessage);
-            setTimeout(() => {
-                developMessage.remove();
-            }, 4000);
         });
     }
+}
+function createMessage(className, src, message) {
+    const developMessage = document.createElement("div");
+    const icon = document.createElement("img");
+    icon.src = src;
+    icon.alt = "Un ícono irrelevante";
+    developMessage.innerText = message;
+    developMessage.classList.add(className);
+    developMessage.appendChild(icon);
+    setTimeout(() => {
+        developMessage.remove();
+    }, 4000);
+    return developMessage;
 }
 function setDefaultValueOnCalcDate() {
     const input = document.getElementById("idNotificationDate");

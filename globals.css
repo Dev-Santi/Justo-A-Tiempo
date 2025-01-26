@@ -49,17 +49,28 @@ html {
     --text-lg: 1.375rem;
     --text-xl: 1.75rem;
 
-    /* Dark mode */
-    /* --clr-100: #181a1b;
-    --clr-0: #1c1f20;
-    --clr-05: #c4c4c4;
-    --clr-1: #22334c;
-    --clr-2: #22334c;
-    --clr-3: #2d60ff;
-    --clr-4: #718ebf;
-    --clr-5: #fe5c73;
-    --clr-6: #9db2cf;
-    --clr-7: #42b540;  */
+    
+}
+
+html.dark {
+    --clr-100: #fefee6; /* Blanco cálido ligeramente más oscuro */
+    --clr-0: #f5f3e2;  /* Gris cálido con más profundidad */
+    --clr-05: #aba88f; /* Gris con un tono más oscuro */
+    --clr-1: #e4dccf;  /* Gris claro cálido un poco más oscuro */
+    --clr-2: #e8e3d5;  /* Gris pastel con más cuerpo */
+    --clr-3: #515dd4;  /* Azul ligeramente cálido y más oscuro */
+    --clr-4: #818d9a;  /* Azul grisáceo cálido con más intensidad */
+    --clr-5: #e07e6d;  /* Rojo coral con un toque más oscuro */
+    --clr-6: #484c5b;  /* Azul oscuro cálido con mayor profundidad */
+    --clr-7: #68b83d;  /* Verde cálido un poco más apagado */
+    --clr-8: #75cc58;  /* Verde cálido más oscuro */
+    --clr-holiday: #e6a000; /* Naranja más cálido y oscuro */
+    --clr-judicial: #79ac7b; /* Verde azulado cálido con mayor profundidad */
+
+}
+
+#homeSvg {
+    fill: var(--clr-3);
 }
 
 body {
@@ -153,6 +164,7 @@ header.main_panel {
 header.main_panel .header_icons {
     display: flex;
     gap: 0.875rem;
+    fill: var(--clr-4);
 }
 
 header.main_panel .header_icons button {
@@ -162,17 +174,10 @@ header.main_panel .header_icons button {
 
     height: 3.125rem;
     width: 3.125rem;
+    padding: .5rem;
 
     border-radius: 50%;
     background-color: var(--clr-1);
-}
-
-header.main_panel .header_icons .no-notification path {
-    fill: var(--clr-4);
-}
-
-header.main_panel .header_icons .has-notification path {
-    fill: var(--clr-5);
 }
 
 #idCloseMenuBtn {
@@ -203,7 +208,7 @@ header.main_panel .header_icons .has-notification path {
     border-radius: 1.5rem;
     box-shadow: 0 4px 10px #0000001a;
 
-    animation: fade-out 4s ease-in-out forwards;
+    animation: fade-out 4s forwards;
 }
 
 .development_message img {
@@ -284,7 +289,7 @@ header.main_panel .header_icons .has-notification path {
     #idCurrentPage {
         flex-direction: column;
         align-items: center;
-        padding: 1.812rem 1.45rem;
+        padding: 1.812rem 0;
         gap: 0;
     }
 
@@ -304,9 +309,9 @@ header.main_panel .header_icons .has-notification path {
         top: 0;
         left: 0;
 
-        margin-left: 3.1rem;
+        margin-left: 2.7rem;
         margin-top: 3rem;
-        transform: scale(1.55);
+        transform: scale(1.4);
     }
 
     .current_page .card h2 {
@@ -315,14 +320,24 @@ header.main_panel .header_icons .has-notification path {
 
     .card_content {
         min-width: auto;
+        max-width: 20.8rem;
         padding: 1.2rem;
+    }
+
+    header.main_panel .header_icons button {
+        padding: .65rem;
+        transform: scale(.9);
+    }
+
+    header.main_panel {
+        padding-block: .8rem;
     }
 }
 
 /*--- Animations ---*/
 @keyframes fade-out {
     0% {
-        opacity: 0%;
+        opacity: 5%;
     }
 
     25% {

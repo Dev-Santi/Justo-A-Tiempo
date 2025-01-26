@@ -34,16 +34,11 @@ function calendar() {
         const termElement = document.getElementById("idTerm");
         if (categorySelect.value == "0") {
             termElement.value = 15;
-            termContainer === null || termContainer === void 0 ? void 0 : termContainer.classList.add("termDisabled");
             setTextInTermInput();
         }
         else if (categorySelect.value == "1") {
             termElement.value = 30;
-            termContainer === null || termContainer === void 0 ? void 0 : termContainer.classList.add("termDisabled");
             setTextInTermInput();
-        }
-        else {
-            termContainer === null || termContainer === void 0 ? void 0 : termContainer.classList.remove("termDisabled");
         }
     });
 }
@@ -53,6 +48,7 @@ function load() {
     loadPage(state);
     loadMonth(state);
     loadYear(state);
+    addColorToMonthsWithCalculatedDays(state);
 }
 function loadPage(state) {
     let firstDay = 0 + state.currentPage[0].getDate().getDay();
@@ -92,11 +88,9 @@ function loadPage(state) {
         }
         // Check if is calculated date
         for (let j = 0; j < state.calculatedDays.length; j++) {
-            if (state.calculatedDays[j].getDate().getTime() == state.currentPage[i].getDate().getTime()) {
+            if (state.calculatedDays[j].getDate().getTime() ==
+                state.currentPage[i].getDate().getTime()) {
                 newDay.classList.add("calculated");
-            }
-            if (j == state.calculatedDays.length - 1 && state.calculatedDays[j].getDate().getTime() == state.currentPage[i].getDate().getTime()) {
-                newDay.classList.add("finalDateCalculated");
             }
         }
         daysContainer === null || daysContainer === void 0 ? void 0 : daysContainer.appendChild(newDay);
@@ -118,16 +112,31 @@ function loadYear(state) {
 }
 function loadMonth(state) {
     var _a;
-    // const year: any = document.getElementById("yearLabel");
-    // year.textContent = state.currentPage[0].getDate().getFullYear();
     (_a = document
         .getElementById("months")) === null || _a === void 0 ? void 0 : _a.children[state.currentPage[0].getDate().getMonth()].classList.add("active");
+}
+function addColorToMonthsWithCalculatedDays(state) {
+    var _a;
+    const children = (_a = document.getElementById("months")) === null || _a === void 0 ? void 0 : _a.children;
+    const currentYear = state.currentPage[0].getDate().getFullYear();
+    for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        let added = false;
+        for (let j = 0; j < state.calculatedDays.length && !added; j++) {
+            const day = state.calculatedDays[j];
+            if (i == day.getDate().getMonth() && currentYear == day.getDate().getFullYear()) {
+                child.classList.add("green_color");
+                added = true;
+            }
+        }
+    }
 }
 function clear() {
     var _a;
     const months = (_a = document.getElementById("months")) === null || _a === void 0 ? void 0 : _a.children;
     for (const m of months) {
         m.classList.remove("active");
+        m.classList.remove("green_color");
     }
     const daysContainer = document.getElementById("days");
     daysContainer.innerHTML = "";
