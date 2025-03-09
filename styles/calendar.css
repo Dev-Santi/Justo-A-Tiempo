@@ -113,7 +113,8 @@
 #calendar #dayLabels {
     font-weight: 800;
     text-transform: uppercase;
-    margin-block: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     padding-top: 0;
 }
 
@@ -173,17 +174,17 @@
 }
 
 #idReminderIcon {
-    margin-left: .78rem;
-    transform: scale(.9); 
+    margin-left: 0.78rem;
+    transform: scale(0.9);
     cursor: pointer;
 }
 
 #idCalendar {
-    transform: scale(.9);
+    transform: scale(0.9);
 }
 
 #idCopy {
-    transform: scale(.9);
+    transform: scale(0.9);
 }
 
 #calcResultDate img:hover {
@@ -244,9 +245,8 @@
     }
 }
 
-@keyframes lastDay{
+@keyframes lastDay {
     0% {
-
     }
 
     100% {
@@ -259,12 +259,12 @@
 @media (max-width: 63.9375rem) {
     #calendarInfo {
         display: flex;
-        gap: .6rem;
+        gap: 0.6rem;
         font-size: 0.78rem;
     }
 
     #idCopy {
-       display: none;
+        display: none;
     }
 
     #calcContentContainer {
@@ -278,16 +278,15 @@
 
     #calendar #months {
         display: flex;
-        gap: .2rem;
+        gap: 0.2rem;
     }
 
     #calendar #months span {
         font-size: 0.78rem;
-
     }
 
     #calendar #dayLabels {
-        font-size: .78rem;
+        font-size: 0.78rem;
     }
 
     #calendarTop {

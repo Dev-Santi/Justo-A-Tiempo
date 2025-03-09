@@ -33,6 +33,7 @@ function program() {
         }
     });
 
+    // Night mode
     document.getElementById("idNightMode")?.addEventListener("click",()=> {
         document.getElementsByTagName("html")[0].classList.toggle("dark")
     })
@@ -45,6 +46,7 @@ function setReadyTheMobileNavigation() {
 
     openMenuBtn.addEventListener("click", () => {
         menu.dataset.state = "1";
+        
     });
     closeMenuBtn.addEventListener("click", () => {
         menu.dataset.state = "0";
@@ -84,11 +86,15 @@ function createMessage(className:string, src:string, message:string) {
 
 function setDefaultValueOnCalcDate() {
     const input: any = document.getElementById("idNotificationDate");
-    const date = new Date().toLocaleDateString().split("/");
-    const day: string = date[1].length < 2 ? "0" + date[1] : date[1];
-    const month: string = date[0].length < 2 ? "0" + date[0] : date[0];
+    const date = new Date();
 
-    input.value = date[2] + "-" + month + "-" + day;
+    // Ajustar la fecha para el formato YYYY-MM-DD
+    const day: string = date.getDate().toString().padStart(2, "0");
+    const month: string = (date.getMonth() + 1).toString().padStart(2, "0"); // getMonth() empieza desde 0
+    const year: string = date.getFullYear().toString();
+
+    // Asignar la fecha al input
+    input.value = `${year}-${month}-${day}`;
 }
 
 function setTextInTermInput() {

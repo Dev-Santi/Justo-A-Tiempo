@@ -33,7 +33,7 @@ html {
     /* colors */
     --clr-100: #ffffff;
     --clr-0: #f5f7fa;
-    --clr-05: #AAAAAA;
+    --clr-05: #aaaaaa;
     --clr-1: #e5e5e5;
     --clr-2: #edf1f7;
     --clr-3: #2d60ff;
@@ -48,29 +48,45 @@ html {
     --text-sm: 1.125rem;
     --text-lg: 1.375rem;
     --text-xl: 1.75rem;
-
-    
 }
 
 html.dark {
     --clr-100: #fefee6; /* Blanco cálido ligeramente más oscuro */
-    --clr-0: #f5f3e2;  /* Gris cálido con más profundidad */
+    --clr-0: #f5f3e2; /* Gris cálido con más profundidad */
     --clr-05: #aba88f; /* Gris con un tono más oscuro */
-    --clr-1: #e4dccf;  /* Gris claro cálido un poco más oscuro */
-    --clr-2: #e8e3d5;  /* Gris pastel con más cuerpo */
-    --clr-3: #515dd4;  /* Azul ligeramente cálido y más oscuro */
-    --clr-4: #818d9a;  /* Azul grisáceo cálido con más intensidad */
-    --clr-5: #e07e6d;  /* Rojo coral con un toque más oscuro */
-    --clr-6: #484c5b;  /* Azul oscuro cálido con mayor profundidad */
-    --clr-7: #68b83d;  /* Verde cálido un poco más apagado */
-    --clr-8: #75cc58;  /* Verde cálido más oscuro */
+    --clr-1: #e4dccf; /* Gris claro cálido un poco más oscuro */
+    --clr-2: #e8e3d5; /* Gris pastel con más cuerpo */
+    --clr-3: #515dd4; /* Azul ligeramente cálido y más oscuro */
+    --clr-4: #818d9a; /* Azul grisáceo cálido con más intensidad */
+    --clr-5: #e07e6d; /* Rojo coral con un toque más oscuro */
+    --clr-6: #484c5b; /* Azul oscuro cálido con mayor profundidad */
+    --clr-7: #68b83d; /* Verde cálido un poco más apagado */
+    --clr-8: #75cc58; /* Verde cálido más oscuro */
     --clr-holiday: #e6a000; /* Naranja más cálido y oscuro */
     --clr-judicial: #79ac7b; /* Verde azulado cálido con mayor profundidad */
-
 }
 
 #homeSvg {
     fill: var(--clr-3);
+}
+
+#idAsideMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#IdApoyar {
+    color: white;
+    font-weight: 500;
+    background-color: var(--clr-3);
+    padding: 0.75rem;
+    margin-bottom: 3rem;
+    border-radius: 1rem;
+}
+
+#IdApoyar:hover {
+    opacity: .75;
 }
 
 body {
@@ -92,7 +108,7 @@ h2 {
     font-weight: 600;
     color: var(--clr-6);
 }
-select{
+select {
     cursor: pointer;
 }
 h2 {
@@ -174,7 +190,7 @@ header.main_panel .header_icons button {
 
     height: 3.125rem;
     width: 3.125rem;
-    padding: .5rem;
+    padding: 0.5rem;
 
     border-radius: 50%;
     background-color: var(--clr-1);
@@ -244,17 +260,17 @@ header.main_panel .header_icons button {
     color: white;
     font-weight: 500;
     background-color: var(--clr-3);
-    padding: .75rem;
+    padding: 0.75rem;
     margin-top: 1rem;
     border-radius: 1rem;
 }
 
 .card button:hover {
-    opacity: .75;
+    opacity: 0.75;
 }
 
 .termDisabled {
-    opacity: .35;
+    opacity: 0.35;
     pointer-events: none;
 }
 
@@ -275,7 +291,7 @@ header.main_panel .header_icons button {
     }
 
     aside.main_panel[data-state="0"] {
-        display: none;
+        display: none !important;
     }
 
     aside.main_panel {
@@ -325,12 +341,12 @@ header.main_panel .header_icons button {
     }
 
     header.main_panel .header_icons button {
-        padding: .65rem;
-        transform: scale(.9);
+        padding: 0.65rem;
+        transform: scale(0.9);
     }
 
     header.main_panel {
-        padding-block: .8rem;
+        padding-block: 0.8rem;
     }
 }
 
@@ -361,7 +377,6 @@ header.main_panel .header_icons button {
 
 @keyframes play-green {
     0% {
-
     }
 
     50% {

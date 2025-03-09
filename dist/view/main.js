@@ -29,6 +29,7 @@ function program() {
             label.textContent = "Fecha de notificación:";
         }
     });
+    // Night mode
     (_a = document.getElementById("idNightMode")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
         document.getElementsByTagName("html")[0].classList.toggle("dark");
     });
@@ -69,10 +70,13 @@ function createMessage(className, src, message) {
 }
 function setDefaultValueOnCalcDate() {
     const input = document.getElementById("idNotificationDate");
-    const date = new Date().toLocaleDateString().split("/");
-    const day = date[1].length < 2 ? "0" + date[1] : date[1];
-    const month = date[0].length < 2 ? "0" + date[0] : date[0];
-    input.value = date[2] + "-" + month + "-" + day;
+    const date = new Date();
+    // Ajustar la fecha para el formato YYYY-MM-DD
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // getMonth() empieza desde 0
+    const year = date.getFullYear().toString();
+    // Asignar la fecha al input
+    input.value = `${year}-${month}-${day}`;
 }
 function setTextInTermInput() {
     const termInput = document.getElementById("idTerm");
