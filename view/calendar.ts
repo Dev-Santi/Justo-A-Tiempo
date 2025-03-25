@@ -52,6 +52,56 @@ function calendar() {
             setTextInTermInput();
         }
     });
+
+    changeMonthLetters();
+    changeView();
+    window.addEventListener("resize", () => {
+        changeMonthLetters();
+        changeView();
+    });
+
+    function changeMonthLetters() {
+        const a = ["E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+        const b = [
+            "Ene",
+            "Feb",
+            "Mar",
+            "Abr",
+            "May",
+            "Jun",
+            "Jul",
+            "Ago",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dic",
+        ];
+
+        const months: any = document.getElementById("months")?.children;
+
+        if (window.innerWidth < 1024) {
+            for (let i = 0; i < months.length; i++) {
+                months[i].textContent = a[i];
+            }
+        } else {
+            for (let i = 0; i < months.length; i++) {
+                months[i].textContent = b[i];
+            }
+        }
+    }
+
+    function changeView() {
+        const btn: any = document.getElementById("idCalcDateBtn");
+        const result: any = document.getElementById("calcResult");
+
+        if (window.innerWidth < 1024) {
+            document.getElementById("calcContentContainer")?.appendChild(btn)
+            document.getElementById("calcContentContainer")?.appendChild(result)
+        } else {
+            document.getElementById("idCalcDate")?.appendChild(btn)
+            document.getElementById("idCalcDate")?.appendChild(result)
+        }
+    }
 }
 
 function load() {
@@ -150,8 +200,8 @@ function loadMonth(state: state) {
 }
 
 function addColorToMonthsWithCalculatedDays(state: state) {
-    const children:any = document.getElementById("months")?.children
-    const currentYear = state.currentPage[0].getDate().getFullYear()
+    const children: any = document.getElementById("months")?.children;
+    const currentYear = state.currentPage[0].getDate().getFullYear();
 
     for (let i = 0; i < children.length; i++) {
         const child = children[i];
@@ -160,8 +210,8 @@ function addColorToMonthsWithCalculatedDays(state: state) {
         for (let j = 0; j < state.calculatedDays.length && !added; j++) {
             const day = state.calculatedDays[j];
 
-            if(i == day.getDate().getMonth() && currentYear == day.getDate().getFullYear()) {
-                child.classList.add("green_color")
+            if (i == day.getDate().getMonth() && currentYear == day.getDate().getFullYear()) {
+                child.classList.add("green_color");
                 added = true;
             }
         }

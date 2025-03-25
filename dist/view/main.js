@@ -1,7 +1,7 @@
 "use strict";
 window.addEventListener("load", program);
 function program() {
-    var _a;
+    var _a, _b;
     // Menu behavior on mobile
     setReadyTheMobileNavigation();
     // Not done yet message
@@ -32,6 +32,17 @@ function program() {
     // Night mode
     (_a = document.getElementById("idNightMode")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
         document.getElementsByTagName("html")[0].classList.toggle("dark");
+    });
+    // Compartir btn
+    (_b = document.getElementById("idCompartir")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", (e) => {
+        e.preventDefault();
+        try {
+            navigator.share({ url: "https://dev-santi.github.io/Justo-A-Tiempo-Remake" });
+        }
+        catch (error) {
+            console.log(error);
+        }
+        console.log("clicked");
     });
 }
 function setReadyTheMobileNavigation() {

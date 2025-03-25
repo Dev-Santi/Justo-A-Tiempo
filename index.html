@@ -68,7 +68,12 @@
                </li>
             </ul>
          </nav>
-         <a target="_blank" href="https://link.mercadopago.com.uy/justoatiempo2025"><button id="IdApoyar">Contribuir con este proyecto</button></a>
+         <div id="helpBtns">
+            <a target="_blank" href="https://link.mercadopago.com.uy/justoatiempo2025"
+               ><button class="helpBtn" id="IdApoyar">Contribuir con este proyecto</button></a
+            >
+            <button class="helpBtn" id="idCompartir">Compartir</button>
+         </div>
       </aside>
       <!-- End of the aside navigation -->
       <main>
@@ -82,11 +87,7 @@
 
             <div class="header_icons">
                <button type="button" id="idNightMode" type="button">
-                  <svg
-                     width="35px"
-                     height="35px"
-                     viewBox="0 0 442.04 442.04"
-                  >
+                  <svg width="35px" height="35px" viewBox="0 0 442.04 442.04">
                      <g>
                         <g>
                            <path
@@ -134,9 +135,9 @@
                         <div class="align_inputs_with_labels">
                            <label for="idCategory">Categoría:</label>
                            <select id="idCategory">
+                              <option value="2">Personalizado</option>
                               <option value="0">Laboral</option>
                               <option value="1">Civil</option>
-                              <option value="2">Personalizado</option>
                            </select>
                            <img id="idCatArrow" class="arrow_icon" src="./assets/icons/Arrow 1.png" alt="" />
                         </div>
@@ -145,13 +146,10 @@
                            <input id="idTerm" type="number" value="15" max="999" min="0" id="idTerm" />
                            <span id="idTermText" class="day_text ml_1">días</span>
                         </div>
-                        <button id="idCalcDateBtn">Calcular</button>
-                        <div id="calcResult"><span>Resultado -> </span><span id="calcResultDate">--/--/--</span></div>
                      </form>
                   </div>
-
                   <form id="customFilters" class="custom_filters">
-                     <span>Seleccione las fechas en las que se suspende el cómputo:</span>
+                     <span id="customFiltersTitle">Seleccione las fechas en las que se suspende el cómputo:</span>
                      <br />
                      <span>
                         <input type="checkbox" name="feria" id="idFeriaCustomFilter" checked />
@@ -178,6 +176,8 @@
                         <label for="idFindeCustomFilter">Sábados y domingos</label>
                      </span>
                   </form>
+                  <button id="idCalcDateBtn">Calcular</button>
+                  <div id="calcResult"><span>Resultado -> </span><span id="calcResultDate">--/--/--</span></div>
                </div>
             </div>
             <div class="card">

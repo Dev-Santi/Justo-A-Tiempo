@@ -139,8 +139,9 @@
 }
 
 #calendar #days span.day.calculated {
+    color: var(--clr-05);
+    background-color: var(--clr-8);
     color: white;
-    animation: showIn 380ms ease-in-out 100ms forwards;
 }
 
 #calendar #days span.day.judicial {
@@ -257,6 +258,11 @@
 /* Mobile ajusts */
 /* 63.9375 == 1023px / desktop starts at 1024px */
 @media (max-width: 63.9375rem) {
+    #idCalcDateBtn {
+        margin-top: 0rem;
+        margin-bottom: -1rem;
+    }
+
     #calendarInfo {
         display: flex;
         gap: 0.6rem;
@@ -276,9 +282,9 @@
         height: 17.2rem;
     }
 
-    #calendar #months {
+    #calendar #months span{
         display: flex;
-        gap: 0.2rem;
+        gap: .2rem;
     }
 
     #calendar #months span {

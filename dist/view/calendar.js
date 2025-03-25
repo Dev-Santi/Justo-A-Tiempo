@@ -41,6 +41,54 @@ function calendar() {
             setTextInTermInput();
         }
     });
+    changeMonthLetters();
+    changeView();
+    window.addEventListener("resize", () => {
+        changeMonthLetters();
+        changeView();
+    });
+    function changeMonthLetters() {
+        var _a;
+        const a = ["E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+        const b = [
+            "Ene",
+            "Feb",
+            "Mar",
+            "Abr",
+            "May",
+            "Jun",
+            "Jul",
+            "Ago",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dic",
+        ];
+        const months = (_a = document.getElementById("months")) === null || _a === void 0 ? void 0 : _a.children;
+        if (window.innerWidth < 1024) {
+            for (let i = 0; i < months.length; i++) {
+                months[i].textContent = a[i];
+            }
+        }
+        else {
+            for (let i = 0; i < months.length; i++) {
+                months[i].textContent = b[i];
+            }
+        }
+    }
+    function changeView() {
+        var _a, _b, _c, _d;
+        const btn = document.getElementById("idCalcDateBtn");
+        const result = document.getElementById("calcResult");
+        if (window.innerWidth < 1024) {
+            (_a = document.getElementById("calcContentContainer")) === null || _a === void 0 ? void 0 : _a.appendChild(btn);
+            (_b = document.getElementById("calcContentContainer")) === null || _b === void 0 ? void 0 : _b.appendChild(result);
+        }
+        else {
+            (_c = document.getElementById("idCalcDate")) === null || _c === void 0 ? void 0 : _c.appendChild(btn);
+            (_d = document.getElementById("idCalcDate")) === null || _d === void 0 ? void 0 : _d.appendChild(result);
+        }
+    }
 }
 function load() {
     clear();

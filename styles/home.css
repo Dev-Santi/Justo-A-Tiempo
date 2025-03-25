@@ -41,9 +41,13 @@
 .custom_filters {
     display: none;
     flex-direction: column;
-    gap: .5rem;
+    gap: 1.5rem;
     color: var(--clr-4);
     opacity: 0;
+}
+
+#customFiltersTitle{
+    margin-bottom: -2.2rem;
 }
 
 .custom_filters.active {
@@ -99,9 +103,13 @@
     }
 }
 
-
 /* 63.9375 == 1023px / desktop starts at 1024px */
 @media (max-width: 63.9375rem) {
+
+    #idCalcDate {
+        height: 10rem;
+    }
+
     #idCategory {
         appearance: auto;
     }

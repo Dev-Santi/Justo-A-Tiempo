@@ -37,6 +37,19 @@ function program() {
     document.getElementById("idNightMode")?.addEventListener("click",()=> {
         document.getElementsByTagName("html")[0].classList.toggle("dark")
     })
+
+    // Compartir btn
+    document.getElementById("idCompartir")?.addEventListener("click", (e) => {
+        e.preventDefault()
+        try {
+            navigator.share({url: "https://dev-santi.github.io/Justo-A-Tiempo-Remake"})
+        } catch (error) {
+            console.log(error);
+        }
+        
+        console.log("clicked");
+    })
+
 }
 
 function setReadyTheMobileNavigation() {

@@ -66,6 +66,18 @@ html.dark {
     --clr-judicial: #79ac7b; /* Verde azulado cálido con mayor profundidad */
 }
 
+html.dark #idNightMode {
+    opacity: .7;
+}
+
+html.dark #idNightMode:hover {
+    opacity: 1;
+}
+
+html #idNightMode:hover {
+    opacity: .7;
+}
+
 #homeSvg {
     fill: var(--clr-3);
 }
@@ -76,17 +88,26 @@ html.dark {
     justify-content: space-between;
 }
 
-#IdApoyar {
+.helpBtn {
     color: white;
     font-weight: 500;
     background-color: var(--clr-3);
     padding: 0.75rem;
-    margin-bottom: 3rem;
+    margin: .2rem;
     border-radius: 1rem;
+    width: 100%;
 }
 
-#IdApoyar:hover {
+.helpBtn:hover {
     opacity: .75;
+}
+
+#idCompartir {
+    filter: grayscale(.6);
+}
+
+#helpBtns {
+    margin-bottom: 3rem;
 }
 
 body {
@@ -286,6 +307,7 @@ header.main_panel .header_icons button {
 /* Mobile ajusts */
 /* 63.9375 == 1023px / desktop starts at 1024px */
 @media (max-width: 63.9375rem) {
+
     header.main_panel h1 {
         display: none;
     }
@@ -381,7 +403,6 @@ header.main_panel .header_icons button {
 
     50% {
         color: #44d742;
-        transform: scale(1.03);
     }
 
     100% {
