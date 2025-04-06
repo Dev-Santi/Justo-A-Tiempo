@@ -46,8 +46,6 @@ function program() {
         } catch (error) {
             console.log(error);
         }
-        
-        console.log("clicked");
     })
 
 }

@@ -103,6 +103,7 @@ html #idNightMode:hover {
 }
 
 #idCompartir {
+    display: none;
     filter: grayscale(.6);
 }
 
@@ -329,6 +330,10 @@ header.main_panel .header_icons button {
         align-items: center;
         padding: 1.812rem 0;
         gap: 0;
+    }
+
+    #idCompartir {
+        display: block;
     }
 
     #idHeaderSettingsBtn {

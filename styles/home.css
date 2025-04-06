@@ -64,6 +64,10 @@
     margin-right: 6.8rem;
 }
 
+#my_calendar {
+    width: 100%;
+    height: 15rem;
+}
 #calcResult {
     display: flex;
     justify-content: space-between;
