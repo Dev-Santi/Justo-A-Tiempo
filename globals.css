@@ -11,6 +11,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all;
+    transition-duration: 200ms;
 }
 
 button {
@@ -48,6 +50,9 @@ html {
     --text-sm: 1.125rem;
     --text-lg: 1.375rem;
     --text-xl: 1.75rem;
+
+
+    scroll-behavior: smooth;
 }
 
 html.dark {
@@ -86,6 +91,8 @@ html #idNightMode:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: all;
+    transition-duration: 200ms;
 }
 
 .helpBtn {
@@ -135,6 +142,10 @@ select {
 }
 h2 {
     font-size: var(--text-lg);
+}
+
+.opacity-70 {
+    opacity: .7;
 }
 
 /* ------------- Main panel ------------- */
@@ -298,7 +309,7 @@ header.main_panel .header_icons button {
 }
 
 .play_green {
-    animation: play-green 700ms linear 80ms forwards;
+    animation: play-green 900ms ease-in-out 120ms forwards;
 }
 
 .withResult {
@@ -354,7 +365,7 @@ header.main_panel .header_icons button {
         left: 0;
 
         margin-left: 2.7rem;
-        margin-top: 3rem;
+        margin-top: 1.9rem;
         transform: scale(1.4);
     }
 
@@ -375,6 +386,10 @@ header.main_panel .header_icons button {
 
     header.main_panel {
         padding-block: 0.8rem;
+    }
+
+    #idAsideMenu {
+        position: fixed;
     }
 }
 
@@ -408,7 +423,8 @@ header.main_panel .header_icons button {
     }
 
     50% {
-        color: #44d742;
+        color: #79c078;
+        text-shadow: 0px 0px 4px rgba(0, 236, 20, 0.459);
     }
 
     100% {

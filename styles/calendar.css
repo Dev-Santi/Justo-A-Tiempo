@@ -101,6 +101,7 @@
     justify-items: center;
     align-items: center;
     gap: 0.15rem;
+    column-gap: .7rem;
 }
 
 #calendar #days span {
@@ -154,7 +155,7 @@
 }
 
 #calendar .weekend {
-    opacity: .6;
+    opacity: .7;
 }
 
 #calendar [class="day weekend calculated"] {
