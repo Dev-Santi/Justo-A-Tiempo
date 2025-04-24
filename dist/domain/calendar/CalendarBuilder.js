@@ -96,14 +96,6 @@ class CalendarBuilder {
                 if (date.getMonth() == 6 && date.getDate() <= 15) {
                     calendar[i][j] = new Holiday(day, "Feria judicial menor");
                 }
-                if (date.toDateString() == easter.toDateString()) {
-                    calendar[i][j] = new Holiday(day, "Domingo de Pascua");
-                    for (let x = j - 1; x > j - 7; x--) {
-                        calendar[i][x] = new Holiday(calendar[i][x], "Semana de Turismo");
-                    }
-                    calendar[i][j - 48] = new Holiday(calendar[i][j - 48], "Carnaval");
-                    calendar[i][j - 47] = new Holiday(calendar[i][j - 47], "Carnaval");
-                }
                 if (date.getMonth() == 4 && date.getDate() == 1) {
                     calendar[i][j] = new Holiday(day, "Día del trabajador");
                 }
@@ -121,6 +113,16 @@ class CalendarBuilder {
                 }
                 if (date.getMonth() == 11 && date.getDate() == 19) {
                     calendar[i][j] = new Holiday(day, "Día del Poder Judicial");
+                }
+                // Modify to ajust pascuas
+                if (date.toDateString() == easter.toDateString()) {
+                    // calendar[i][j] = new Holiday(day, "Semana de Turismo");
+                    for (let x = j; x > j - 7; x--) {
+                        calendar[i][x - 1] = new Holiday(calendar[i][x - 1], "Semana de Turismo");
+                        console.log(calendar[i][x]);
+                    }
+                    calendar[i][j - 48] = new Holiday(calendar[i][j - 48], "Carnaval");
+                    calendar[i][j - 47] = new Holiday(calendar[i][j - 47], "Carnaval");
                 }
             }
         }
