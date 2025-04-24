@@ -153,6 +153,14 @@
     animation: lastDay 380ms ease-in-out 100ms forwards;
 }
 
+#calendar .weekend {
+    opacity: .6;
+}
+
+#calendar [class="day weekend calculated"] {
+    opacity: 1 !important;
+}
+
 #calendar #days span.dateSkipped {
     background-color: var(--clr-5);
     animation: animSkippedDate 1s forwards;
@@ -190,6 +198,29 @@
 
 #calcResultDate img:hover {
     opacity: 0.5;
+}
+
+#idDownloadCalendar {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom:0;
+
+    width: 1.5rem;
+    margin-right: 1.15rem;
+    margin-bottom: .25rem;
+    opacity: .5;
+    transition: all;
+    transition-duration: 200ms;
+}
+
+
+#idDownloadCalendar:hover{
+    opacity: 1;
+}
+
+#idDownloadCalendar img {
+    width: 100%;
 }
 
 @keyframes animDate {

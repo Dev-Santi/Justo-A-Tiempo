@@ -152,7 +152,6 @@ class CalendarBuilder {
                     // calendar[i][j] = new Holiday(day, "Semana de Turismo");
                     for (let x = j; x > j - 7; x--) { 
                         calendar[i][x-1] = new Holiday(calendar[i][x-1], "Semana de Turismo");
-                        console.log(calendar[i][x]);
                     }
                     calendar[i][j - 48] = new Holiday(calendar[i][j - 48], "Carnaval");
                     calendar[i][j - 47] = new Holiday(calendar[i][j - 47], "Carnaval");

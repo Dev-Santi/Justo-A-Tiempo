@@ -268,6 +268,7 @@ header.main_panel .header_icons button {
 }
 
 .card_content {
+    position: relative;
     background-color: var(--clr-100);
     min-width: 32rem;
     padding: 1.5rem;

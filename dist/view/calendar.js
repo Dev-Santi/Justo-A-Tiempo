@@ -113,6 +113,10 @@ function loadPage(state) {
         const newDay = document.createElement("span");
         newDay.classList.add("day");
         newDay.textContent = "" + state.currentPage[i].getDate().getDate();
+        const dayName = state.currentPage[i].getDate().toDateString().split(" ")[0];
+        if (dayName == "Sun" || dayName == "Sat") {
+            newDay.classList.add("weekend");
+        }
         if (state.currentPage[i] instanceof Holiday) {
             const calendarInfo = document.getElementById("calendarInfo");
             const description = state.currentPage[i].getDescription();

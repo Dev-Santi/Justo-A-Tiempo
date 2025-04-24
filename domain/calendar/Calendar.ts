@@ -248,11 +248,6 @@ class Calendar {
             const month = String(date.getMonth() + 1).padStart(2, "0"); // Mes (0-11) + 1, con ceros a la izquierda
             const day = String(date.getDate()).padStart(2, "0");
 
-            console.log(day);
-            console.log(month);
-            console.log(year);
-            
-
             window.open(
                 `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Vencimiento&dates=${year}${month}${day}T060000/${year}${month}${day}T080000`
             );
@@ -274,10 +269,5 @@ class Calendar {
         // resultElement.appendChild(reminderIcon);
 
         resultElement.classList.add("withResult");
-    }
-
-    // Only for test
-    setTestState(y: number, m: number, d: number) {
-        this.setCurrentPage(this.getDefaulPage(new Date(y, m, d)));
     }
 }

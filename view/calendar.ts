@@ -95,11 +95,11 @@ function calendar() {
         const result: any = document.getElementById("calcResult");
 
         if (window.innerWidth < 1024) {
-            document.getElementById("calcContentContainer")?.appendChild(btn)
-            document.getElementById("calcContentContainer")?.appendChild(result)
+            document.getElementById("calcContentContainer")?.appendChild(btn);
+            document.getElementById("calcContentContainer")?.appendChild(result);
         } else {
-            document.getElementById("idCalcDate")?.appendChild(btn)
-            document.getElementById("idCalcDate")?.appendChild(result)
+            document.getElementById("idCalcDate")?.appendChild(btn);
+            document.getElementById("idCalcDate")?.appendChild(result);
         }
     }
 }
@@ -134,6 +134,11 @@ function loadPage(state: any) {
         newDay.classList.add("day");
         newDay.textContent = "" + state.currentPage[i].getDate().getDate();
 
+        const dayName = state.currentPage[i].getDate().toDateString().split(" ")[0];
+        if (dayName == "Sun" || dayName == "Sat") {
+            newDay.classList.add("weekend");
+        }
+        
         if (state.currentPage[i] instanceof Holiday) {
             const calendarInfo: any = document.getElementById("calendarInfo");
 
