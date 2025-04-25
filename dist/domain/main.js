@@ -12,5 +12,4 @@ function calcTermDate() {
     const termInput = document.getElementById("idTerm");
     const term = termInput.value;
     defaultCalendar.calculateDates(new Date(date[0], date[1] - 1, date[2]), category, parseInt(term));
-    window.scroll(0, 200);
 }
