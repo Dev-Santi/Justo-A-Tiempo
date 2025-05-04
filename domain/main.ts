@@ -2,7 +2,6 @@ const builder = new CalendarBuilder();
 const defaultCalendar = builder.setCalendarName("default").setStartingYear(2024).build();
 
 // Manual changes
-console.log(defaultCalendar.getYears()[1]);
 defaultCalendar.getYears()[1][179] = new Holiday(defaultCalendar.getYears()[1][179], "Día del defensor público")
 
 function calcTermDate() {

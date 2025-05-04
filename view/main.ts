@@ -1,5 +1,10 @@
 window.addEventListener("load", program);
 
+ // Boton de guardar en inicio
+ if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("../sw.js");
+}
+
 function program() {
     // Menu behavior on mobile
     setReadyTheMobileNavigation();
@@ -34,20 +39,19 @@ function program() {
     });
 
     // Night mode
-    document.getElementById("idNightMode")?.addEventListener("click",()=> {
-        document.getElementsByTagName("html")[0].classList.toggle("dark")
-    })
+    document.getElementById("idNightMode")?.addEventListener("click", () => {
+        document.getElementsByTagName("html")[0].classList.toggle("dark");
+    });
 
     // Compartir btn
     document.getElementById("idCompartir")?.addEventListener("click", (e) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
-            navigator.share({url: "https://dev-santi.github.io/Justo-A-Tiempo-Remake"})
+            navigator.share({ url: "https://dev-santi.github.io/Justo-A-Tiempo-Remake" });
         } catch (error) {
             console.log(error);
         }
-    })
-
+    });
 }
 
 function setReadyTheMobileNavigation() {
@@ -57,7 +61,6 @@ function setReadyTheMobileNavigation() {
 
     openMenuBtn.addEventListener("click", () => {
         menu.dataset.state = "1";
-        
     });
     closeMenuBtn.addEventListener("click", () => {
         menu.dataset.state = "0";
@@ -70,14 +73,18 @@ function setReadyToDisplayDevelopmentMessage() {
 
     for (let i = 0; i < onDevelopmentElements.length && effectsContainer; i++) {
         onDevelopmentElements[i].addEventListener("click", () => {
-            const developMessage = createMessage("development_message","./assets/icons/settings.svg","En desarrollo")
+            const developMessage = createMessage(
+                "development_message",
+                "./assets/icons/settings.svg",
+                "En desarrollo"
+            );
 
             effectsContainer.appendChild(developMessage);
         });
     }
 }
 
-function createMessage(className:string, src:string, message:string) {
+function createMessage(className: string, src: string, message: string) {
     const developMessage = document.createElement("div");
     const icon = document.createElement("img");
 
