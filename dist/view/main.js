@@ -5,7 +5,7 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("../sw.js");
 }
 function program() {
-    var _a, _b;
+    var _a, _b, _c, _d, _e;
     // Menu behavior on mobile
     setReadyTheMobileNavigation();
     // Not done yet message
@@ -45,6 +45,29 @@ function program() {
         }
         catch (error) {
             console.log(error);
+        }
+    });
+    // change month with fingers on mobile
+    let startPosition = 0;
+    let currMonth = 0;
+    let nextMonth = -1;
+    (_c = document.getElementById("days")) === null || _c === void 0 ? void 0 : _c.addEventListener("touchstart", (e) => {
+        startPosition = e.touches[0].clientX;
+        currMonth = Number.parseInt(defaultCalendar.getState().currentPage[0].getStringDate().split("/")[1]) - 1;
+    });
+    (_d = document.getElementById("days")) === null || _d === void 0 ? void 0 : _d.addEventListener("touchmove", (e) => {
+        const x = e.touches[0].clientX;
+        if (startPosition - x > 35) {
+            nextMonth = currMonth + 1;
+        }
+        else if (x - startPosition > 35) {
+            nextMonth = currMonth - 1;
+        }
+    });
+    (_e = document.getElementById("days")) === null || _e === void 0 ? void 0 : _e.addEventListener("touchend", (e) => {
+        if (nextMonth >= 0 && nextMonth <= 11) {
+            defaultCalendar.goToMonth(nextMonth);
+            load();
         }
     });
 }

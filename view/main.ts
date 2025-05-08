@@ -1,7 +1,7 @@
 window.addEventListener("load", program);
 
- // Boton de guardar en inicio
- if ("serviceWorker" in navigator) {
+// Boton de guardar en inicio
+if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("../sw.js");
 }
 
@@ -50,6 +50,29 @@ function program() {
             navigator.share({ url: "https://dev-santi.github.io/Justo-A-Tiempo-Remake" });
         } catch (error) {
             console.log(error);
+        }
+    });
+
+    // change month with fingers on mobile
+    let startPosition = 0;
+    let currMonth = 0;
+    let nextMonth = -1;
+    document.getElementById("days")?.addEventListener("touchstart", (e) => {
+        startPosition = e.touches[0].clientX
+        currMonth = Number.parseInt(defaultCalendar.getState().currentPage[0].getStringDate().split("/")[1]) - 1
+    });
+    document.getElementById("days")?.addEventListener("touchmove", (e) => {
+        const x = e.touches[0].clientX;
+        if(startPosition - x > 35) {
+            nextMonth = currMonth + 1
+        } else if(x - startPosition > 35) {
+            nextMonth = currMonth - 1
+        }
+    });
+    document.getElementById("days")?.addEventListener("touchend", (e) => {
+        if(nextMonth >= 0 && nextMonth <= 11){
+            defaultCalendar.goToMonth(nextMonth);
+        load();
         }
     });
 }

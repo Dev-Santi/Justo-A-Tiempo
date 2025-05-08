@@ -144,10 +144,6 @@ h2 {
     font-size: var(--text-lg);
 }
 
-.opacity-70 {
-    opacity: .7;
-}
-
 /* ------------- Main panel ------------- */
 
 /* Aside navigation */
@@ -183,6 +179,13 @@ aside.main_panel nav ul li a {
 aside.main_panel nav ul li.disabled a {
     filter: grayscale(100);
     opacity: 0.4;
+}
+
+#slider_test {
+    width: 10rem;
+    height: 10rem;
+    background-color: red;
+    color: black;
 }
 
 .development,

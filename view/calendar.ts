@@ -145,11 +145,11 @@ function loadPage(state: any) {
             const description = state.currentPage[i].getDescription();
             const square = description.includes("Feria") ? "judicial_square" : "holiday_square";
 
-            newDay.addEventListener("pointerenter", (e) => {
+            newDay.addEventListener("mouseenter", (e) => {
                 calendarInfo.innerHTML = `<span><span class="${square}"></span>${description}</span>`;
             });
 
-            newDay.addEventListener("pointerleave", (e) => {
+            newDay.addEventListener("mouseleave", (e) => {
                 calendarInfo.innerHTML = `<span><span class="judicial_square"></span>Feria Judicial</span>
                 <span><span class="holiday_square"></span>Feriado</span>`;
             });
