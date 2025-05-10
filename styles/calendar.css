@@ -139,27 +139,19 @@
     font-weight: 700;
 }
 
+#calendar #days span.day.judicial {
+    background-color: var(--clr-judicial);
+    color: white;
+}
+
 #calendar #days span.day.calculated {
     color: var(--clr-05);
     background-color: var(--clr-8);
     color: white;
 }
 
-#calendar #days span.day.judicial {
-    background-color: var(--clr-judicial);
-    color: white;
-}
-
 #calendar #days span.day.calculated.finalDateCalculated {
     animation: lastDay 380ms ease-in-out 100ms forwards;
-}
-
-#calendar .weekend {
-    opacity: .7;
-}
-
-#calendar [class="day weekend calculated"] {
-    opacity: 1 !important;
 }
 
 #calendar #days span.dateSkipped {
