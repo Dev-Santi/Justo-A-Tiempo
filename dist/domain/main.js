@@ -2,7 +2,9 @@
 const builder = new CalendarBuilder();
 const defaultCalendar = builder.setCalendarName("default").setStartingYear(2024).build();
 // Manual changes
-defaultCalendar.getYears()[1][179] = new Holiday(defaultCalendar.getYears()[1][179], "Día del defensor público");
+// console.log(defaultCalendar.getYears()[1]);
+defaultCalendar.getYears()[1][179] = new Holiday(defaultCalendar.getYears()[1][179], "DÍA DEF. PÚBLICO");
+defaultCalendar.getYears()[1][68] = new Holiday(defaultCalendar.getYears()[1][68], "DÍA INT. JUEZAS");
 function calcTermDate() {
     const dateInput = document.getElementById("idNotificationDate");
     const date = dateInput.value.split("-");

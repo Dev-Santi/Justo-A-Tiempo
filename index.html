@@ -128,11 +128,12 @@
                      <form id="idCalcDate">
                         <div class="align_inputs_with_labels">
                            <label id="idLabelNoti" for="idNotificationDate">Fecha:</label>
-                           <input id="idNotificationDate" type="date" />
+                           <input data-testid="testDateInput" id="idNotificationDate" min="2024-01-02"
+                           max="202-12-31" type="date" />
                         </div>
                         <div class="align_inputs_with_labels">
                            <label for="idCategory">Categoría:</label>
-                           <select id="idCategory">
+                           <select data-testid="testCategorySelector" id="idCategory">
                               <option value="0">Laboral</option>
                               <option value="1">Civil</option>
                               <option value="2">Personalizado</option>
@@ -141,12 +142,12 @@
                         </div>
                         <div id="idTermContainer" class="align_inputs_with_labels">
                            <label for="idTerm">Plazo:</label>
-                           <input id="idTerm" type="number" value="15" max="999" min="0" id="idTerm" />
+                           <input id="idTerm" type="number" value="15" max="999" min="0" data-testid="testDaysCountInput" id="idTerm" />
                            <span id="idTermText" class="day_text ml_1">días</span>
                         </div>
                      </form>
                   </div>
-                  <form id="customFilters" class="custom_filters">
+                  <form data-testid="testCustomFilters" id="customFilters" class="custom_filters">
                      <span id="customFiltersTitle">Seleccione las fechas en las que se suspende el cómputo:</span>
                      <br />
                      <span>
@@ -174,8 +175,8 @@
                         <label for="idFindeCustomFilter">Sábados y domingos</label>
                      </span>
                   </form>
-                  <button id="idCalcDateBtn">Calcular</button>
-                  <div id="calcResult"><span>Resultado -> </span><span id="calcResultDate">--/--/--</span></div>
+                  <button data-testid="testCalcBtn" id="idCalcDateBtn">Calcular</button>
+                  <div id="calcResult"><span>Resultado -> </span><span data-testid="testCalcResult" id="calcResultDate">--/--/--</span></div>
                </div>
             </div>
             <!-- Calendario -->
