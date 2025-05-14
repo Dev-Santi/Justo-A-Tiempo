@@ -25,6 +25,7 @@ function calendar() {
     calcButton.addEventListener("click", (e) => {
         e.preventDefault();
         calcTermDate();
+        loadRecentComputations();
         updateResultDateAndPlayAnimation();
         addCopyBtn();
         addCalendarBtn();
@@ -250,4 +251,53 @@ function navigateToStartOfCalculatedDays() {
     defaultCalendar.goToYear(defaultCalendar.getState().calculatedDays[0].getDate().getFullYear());
     defaultCalendar.goToMonth(defaultCalendar.getState().calculatedDays[0].getDate().getMonth());
 }
-;
+function loadRecentComputations() {
+    try {
+        let item = localStorage.getItem("recent");
+        if (item) {
+            const containerMaster = document.getElementById("idRecentComputations");
+            containerMaster.innerHTML = "";
+            item = JSON.parse(item);
+            item.forEach((e) => {
+                const container = document.createElement("div");
+                const leftSide = document.createElement("div");
+                const categoryLabel = document.createElement("h3");
+                const notificationLabel = document.createElement("p");
+                const daysLabel = document.createElement("p");
+                const rightSide = document.createElement("div");
+                const finalDate = document.createElement("span");
+                const calendarIconContainer = document.createElement("span");
+                const calendarIcon = document.createElement("img");
+                const year = e.date.split("-")[0];
+                const month = e.date.split("-")[1];
+                const day = e.date.split("-")[2];
+                categoryLabel.textContent = e.category == "0" ? "Laboral" : e.category == "1" ? "Civil" : "Personalizado";
+                notificationLabel.textContent = "Notificación: " + day + "/" + month + "/" + year;
+                daysLabel.textContent = "Plazo: " + e.term + " días";
+                finalDate.textContent = e.result;
+                calendarIcon.src = "./assets/icons/calendar-symbol-svgrepo-com.svg";
+                calendarIcon.alt = "icono de calendario";
+                leftSide.appendChild(categoryLabel);
+                leftSide.appendChild(notificationLabel);
+                leftSide.appendChild(daysLabel);
+                rightSide.appendChild(finalDate);
+                calendarIconContainer.appendChild(calendarIcon);
+                rightSide.append(calendarIconContainer);
+                container.appendChild(leftSide);
+                container.appendChild(rightSide);
+                containerMaster.appendChild(container);
+            });
+        }
+        //  <div>
+        //     <div>
+        //        <h3>Laboral</h3>
+        //        <p>Notificación: 12/06/2024</p>
+        //        <p>Plazo: 15 días</p>
+        //     </div>
+        //     <div><span>12/06/2024</span><span><img src="./assets/icons/calendar-symbol-svgrepo-com.svg" alt=""></span></div>
+        //  </div>
+    }
+    catch (error) {
+        console.log(error);
+    }
+}

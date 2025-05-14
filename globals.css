@@ -51,7 +51,6 @@ html {
     --text-lg: 1.375rem;
     --text-xl: 1.75rem;
 
-
     scroll-behavior: smooth;
 }
 
@@ -72,7 +71,7 @@ html.dark {
 }
 
 html.dark #idNightMode {
-    opacity: .7;
+    opacity: 0.7;
 }
 
 html.dark #idNightMode:hover {
@@ -80,7 +79,7 @@ html.dark #idNightMode:hover {
 }
 
 html #idNightMode:hover {
-    opacity: .7;
+    opacity: 0.7;
 }
 
 #homeSvg {
@@ -100,18 +99,18 @@ html #idNightMode:hover {
     font-weight: 500;
     background-color: var(--clr-3);
     padding: 0.75rem;
-    margin: .2rem;
+    margin: 0.2rem;
     border-radius: 1rem;
     width: 100%;
 }
 
 .helpBtn:hover {
-    opacity: .75;
+    opacity: 0.75;
 }
 
 #idCompartir {
     display: none;
-    filter: grayscale(.6);
+    filter: grayscale(0.6);
 }
 
 #helpBtns {
@@ -323,7 +322,10 @@ header.main_panel .header_icons button {
 /* Mobile ajusts */
 /* 63.9375 == 1023px / desktop starts at 1024px */
 @media (max-width: 63.9375rem) {
-
+    .mt {
+        margin-top: 2rem;
+    }
+    
     header.main_panel h1 {
         display: none;
     }

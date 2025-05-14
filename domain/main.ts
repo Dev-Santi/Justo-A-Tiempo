@@ -27,4 +27,35 @@ function calcTermDate() {
         category,
         parseInt(term)
     );
+
+    saveLastCalculatedDate(category, date, term);
+}
+
+function saveLastCalculatedDate(category: string, date: Array<string>, term: string) {
+    try {
+        let inLocalStorage: any = localStorage.getItem("recent");
+
+        if (inLocalStorage) {
+            inLocalStorage = JSON.parse(inLocalStorage);
+        } else {
+            inLocalStorage = [];
+        }
+
+        inLocalStorage.unshift({
+            category: category,
+            date: date.join("-"),
+            term: term,
+            result: defaultCalendar.getState().calculatedDays[
+                defaultCalendar.getState().calculatedDays.length - 1
+            ].getStringDate(),
+        });
+
+        if(inLocalStorage.length > 3) {
+            inLocalStorage.splice(3);
+        }
+
+        localStorage.setItem("recent",JSON.stringify(inLocalStorage))
+    } catch (e) {
+        console.log(e);
+    }
 }

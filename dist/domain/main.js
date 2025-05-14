@@ -13,4 +13,29 @@ function calcTermDate() {
     const termInput = document.getElementById("idTerm");
     const term = termInput.value;
     defaultCalendar.calculateDates(new Date(date[0], date[1] - 1, date[2]), category, parseInt(term));
+    saveLastCalculatedDate(category, date, term);
+}
+function saveLastCalculatedDate(category, date, term) {
+    try {
+        let inLocalStorage = localStorage.getItem("recent");
+        if (inLocalStorage) {
+            inLocalStorage = JSON.parse(inLocalStorage);
+        }
+        else {
+            inLocalStorage = [];
+        }
+        inLocalStorage.unshift({
+            category: category,
+            date: date.join("-"),
+            term: term,
+            result: defaultCalendar.getState().calculatedDays[defaultCalendar.getState().calculatedDays.length - 1].getStringDate(),
+        });
+        if (inLocalStorage.length > 3) {
+            inLocalStorage.splice(3);
+        }
+        localStorage.setItem("recent", JSON.stringify(inLocalStorage));
+    }
+    catch (e) {
+        console.log(e);
+    }
 }

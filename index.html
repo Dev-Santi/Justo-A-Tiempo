@@ -128,8 +128,13 @@
                      <form id="idCalcDate">
                         <div class="align_inputs_with_labels">
                            <label id="idLabelNoti" for="idNotificationDate">Fecha:</label>
-                           <input data-testid="testDateInput" id="idNotificationDate" min="2024-01-02"
-                           max="202-12-31" type="date" />
+                           <input
+                              data-testid="testDateInput"
+                              id="idNotificationDate"
+                              min="2024-01-02"
+                              max="202-12-31"
+                              type="date"
+                           />
                         </div>
                         <div class="align_inputs_with_labels">
                            <label for="idCategory">Categoría:</label>
@@ -142,7 +147,15 @@
                         </div>
                         <div id="idTermContainer" class="align_inputs_with_labels">
                            <label for="idTerm">Plazo:</label>
-                           <input id="idTerm" type="number" value="15" max="999" min="0" data-testid="testDaysCountInput" id="idTerm" />
+                           <input
+                              id="idTerm"
+                              type="number"
+                              value="15"
+                              max="999"
+                              min="0"
+                              data-testid="testDaysCountInput"
+                              id="idTerm"
+                           />
                            <span id="idTermText" class="day_text ml_1">días</span>
                         </div>
                      </form>
@@ -176,7 +189,9 @@
                      </span>
                   </form>
                   <button data-testid="testCalcBtn" id="idCalcDateBtn">Calcular</button>
-                  <div id="calcResult"><span>Resultado -> </span><span data-testid="testCalcResult" id="calcResultDate">--/--/--</span></div>
+                  <div id="calcResult">
+                     <span>Resultado -> </span><span data-testid="testCalcResult" id="calcResultDate">--/--/--</span>
+                  </div>
                </div>
             </div>
             <!-- Calendario -->
@@ -231,6 +246,36 @@
                         alt="Boton para descargar el calendario judicial desde el sitio oficial"
                      />
                   </a>
+               </div>
+            </div>
+            <!-- Recent computations -->
+            <div class="card">
+               <h2 class="mt">Últimos cálculos</h2>
+               <div id="idRecentComputations" class="card_content">
+                  <div>
+                     <div>
+                        <h3>Laboral</h3>
+                        <p>Notificación: 12/06/2024</p>
+                        <p>Plazo: 15 días</p>
+                     </div>
+                     <div><span>12/06/2024</span><span><img src="./assets/icons/calendar-symbol-svgrepo-com.svg" alt=""></span></div>
+                  </div>
+                  <div>
+                     <div>
+                        <h3>Laboral</h3>
+                        <p>Notificación: 12/06/2024</p>
+                        <p>Plazo: 15 días</p>
+                     </div>
+                     <div><span>12/06/2024</span><span><img src="./assets/icons/calendar-symbol-svgrepo-com.svg" alt=""></span></div>
+                  </div>
+                  <div>
+                     <div>
+                        <h3>---</h3>
+                        <p>Notificación: ---</p>
+                        <p>Plazo: ---</p>
+                     </div>
+                     <div><span>---</span></div>
+                  </div>
                </div>
             </div>
          </section>

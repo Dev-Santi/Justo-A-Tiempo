@@ -53,7 +53,8 @@ function program() {
     let nextMonth = -1;
     (_c = document.getElementById("days")) === null || _c === void 0 ? void 0 : _c.addEventListener("touchstart", (e) => {
         startPosition = e.touches[0].clientX;
-        currMonth = Number.parseInt(defaultCalendar.getState().currentPage[0].getStringDate().split("/")[1]) - 1;
+        currMonth =
+            Number.parseInt(defaultCalendar.getState().currentPage[0].getStringDate().split("/")[1]) - 1;
     });
     (_d = document.getElementById("days")) === null || _d === void 0 ? void 0 : _d.addEventListener("touchmove", (e) => {
         const x = e.touches[0].clientX;

@@ -58,21 +58,24 @@ function program() {
     let currMonth = 0;
     let nextMonth = -1;
     document.getElementById("days")?.addEventListener("touchstart", (e) => {
-        startPosition = e.touches[0].clientX
-        currMonth = Number.parseInt(defaultCalendar.getState().currentPage[0].getStringDate().split("/")[1]) - 1
+        startPosition = e.touches[0].clientX;
+        currMonth =
+            Number.parseInt(
+                defaultCalendar.getState().currentPage[0].getStringDate().split("/")[1]
+            ) - 1;
     });
     document.getElementById("days")?.addEventListener("touchmove", (e) => {
         const x = e.touches[0].clientX;
-        if(startPosition - x > 35) {
-            nextMonth = currMonth + 1
-        } else if(x - startPosition > 35) {
-            nextMonth = currMonth - 1
+        if (startPosition - x > 35) {
+            nextMonth = currMonth + 1;
+        } else if (x - startPosition > 35) {
+            nextMonth = currMonth - 1;
         }
     });
     document.getElementById("days")?.addEventListener("touchend", (e) => {
-        if(nextMonth >= 0 && nextMonth <= 11){
+        if (nextMonth >= 0 && nextMonth <= 11) {
             defaultCalendar.goToMonth(nextMonth);
-        load();
+            load();
         }
     });
 }
