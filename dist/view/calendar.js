@@ -25,6 +25,10 @@ function calendar() {
     calcButton.addEventListener("click", (e) => {
         e.preventDefault();
         calcTermDate();
+        updateResultDateAndPlayAnimation();
+        addCopyBtn();
+        addCalendarBtn();
+        navigateToStartOfCalculatedDays();
         load();
     });
     (_b = document.getElementById("idCategory")) === null || _b === void 0 ? void 0 : _b.addEventListener("change", (e) => {
@@ -199,3 +203,51 @@ function clear() {
     const yearRight = document.getElementById("year_right");
     yearRight.className = "triangle inverted";
 }
+function updateResultDateAndPlayAnimation() {
+    const resultElement = document.getElementById("calcResultDate");
+    resultElement.textContent = defaultCalendar
+        .getState()
+        .calculatedDays[defaultCalendar.getState().calculatedDays.length - 1].getStringDate();
+    resultElement.classList.toggle("play_green");
+    setTimeout(() => {
+        resultElement.classList.toggle("play_green");
+    }, 800);
+}
+function addCopyBtn() {
+    const resultElement = document.getElementById("calcResultDate");
+    const copyIcon = document.createElement("img");
+    copyIcon.src = "./assets/icons/copy-svgrepo-com.svg";
+    copyIcon.alt = "Botón para copiar";
+    copyIcon.id = "idCopy";
+    copyIcon.addEventListener("click", () => {
+        navigator.clipboard.writeText(resultElement.textContent);
+        copyIcon.classList.toggle("playAnimation");
+        setTimeout(() => {
+            copyIcon.classList.toggle("playAnimation");
+        }, 400);
+    });
+    resultElement.appendChild(copyIcon);
+}
+function addCalendarBtn() {
+    const resultElement = document.getElementById("calcResultDate");
+    const calendarIcon = document.createElement("img");
+    calendarIcon.src = "assets/icons/calendar-symbol-svgrepo-com.svg";
+    calendarIcon.alt = "Botón para agendar";
+    calendarIcon.id = "idCalendar";
+    calendarIcon.addEventListener("click", () => {
+        const date = defaultCalendar
+            .getState()
+            .calculatedDays[defaultCalendar.getState().calculatedDays.length - 1].getDate();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0"); // Mes (0-11) + 1, con ceros a la izquierda
+        const day = String(date.getDate()).padStart(2, "0");
+        window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=Vencimiento&dates=${year}${month}${day}T060000/${year}${month}${day}T080000`);
+    });
+    resultElement.appendChild(calendarIcon);
+    resultElement.classList.add("withResult");
+}
+function navigateToStartOfCalculatedDays() {
+    defaultCalendar.goToYear(defaultCalendar.getState().calculatedDays[0].getDate().getFullYear());
+    defaultCalendar.goToMonth(defaultCalendar.getState().calculatedDays[0].getDate().getMonth());
+}
+;

@@ -28,9 +28,7 @@ class Day {
 }
 
 class Holiday extends Day {
-
     constructor(day: Day, description: string) {
-        // test this
         super(day.getDate());
         this.description = description;
     };

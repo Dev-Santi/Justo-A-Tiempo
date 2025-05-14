@@ -1,8 +1,6 @@
 type state = {
     currentPage: Array<Day>;
     calculatedDays: Array<Day>;
-    nextHasCalculatedDates: boolean;
-    previousHasCalculatedDates: boolean;
 };
 
 class Calendar {
@@ -17,8 +15,6 @@ class Calendar {
         this.state = {
             currentPage: [],
             calculatedDays: [],
-            nextHasCalculatedDates: false,
-            previousHasCalculatedDates: false,
         };
     }
 
@@ -38,15 +34,11 @@ class Calendar {
         return {
             currentPage: this.state.currentPage,
             calculatedDays: this.state.calculatedDays,
-            nextHasCalculatedDates: this.state.nextHasCalculatedDates,
-            previousHasCalculatedDates: this.state.previousHasCalculatedDates,
         };
     }
 
     resetState() {
         this.setCurrentPage(this.getDefaulPage());
-        this.state.nextHasCalculatedDates = false;
-        this.state.previousHasCalculatedDates = false;
         this.state.calculatedDays = [];
     }
 
@@ -153,17 +145,17 @@ class Calendar {
 
                         this.state.calculatedDays.push(this.getYears()[i][j]);
                     } else if (category == "2") {
-                        const feria:any = document.getElementById("idFeriaCustomFilter")
-                        const turi:any = document.getElementById("idTurismoCustomFilter")
-                        const car:any = document.getElementById("idCarnavalCustomFilter")
-                        const fer:any = document.getElementById("idFeriadoCustomFilter")
-                        const fin:any = document.getElementById("idFindeCustomFilter")
+                        const feria: any = document.getElementById("idFeriaCustomFilter");
+                        const turi: any = document.getElementById("idTurismoCustomFilter");
+                        const car: any = document.getElementById("idCarnavalCustomFilter");
+                        const fer: any = document.getElementById("idFeriadoCustomFilter");
+                        const fin: any = document.getElementById("idFindeCustomFilter");
 
-                        const filters = [ 
+                        const filters = [
                             feria.checked,
                             turi.checked,
                             car.checked,
-                            fer.checked, 
+                            fer.checked,
                             fin.checked,
                         ];
 
@@ -202,57 +194,5 @@ class Calendar {
                 }
             }
         }
-
-        // navigate to first calculated day
-        this.goToYear(this.getState().calculatedDays[0].getDate().getFullYear());
-        this.goToMonth(this.getState().calculatedDays[0].getDate().getMonth());
-
-        // update result date
-        const resultElement: any = document.getElementById("calcResultDate");
-        resultElement.textContent =
-            this.getState().calculatedDays[
-                this.getState().calculatedDays.length - 1
-            ].getStringDate();
-
-        // play animation
-        resultElement.classList.toggle("play_green")
-        setTimeout(()=> {
-            resultElement.classList.toggle("play_green")
-        }, 800)
-
-        
-
-        // add copy button
-        const copyIcon = document.createElement("img");
-        copyIcon.src = "./assets/icons/copy-svgrepo-com.svg";
-        copyIcon.alt = "Botón para copiar";
-        copyIcon.id = "idCopy";
-        copyIcon.addEventListener("click", () => {
-            navigator.clipboard.writeText(resultElement.textContent);
-            copyIcon.classList.toggle("playAnimation");
-            setTimeout(() => {
-                copyIcon.classList.toggle("playAnimation");
-            }, 400);
-        });
-        resultElement.appendChild(copyIcon);
-
-        // add calendar button
-        const calendarIcon = document.createElement("img");
-        calendarIcon.src = "assets/icons/calendar-symbol-svgrepo-com.svg";
-        calendarIcon.alt = "Botón para agendar";
-        calendarIcon.id = "idCalendar";
-        calendarIcon.addEventListener("click", () => {
-            const date =
-                this.getState().calculatedDays[this.getState().calculatedDays.length - 1].getDate();
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, "0"); // Mes (0-11) + 1, con ceros a la izquierda
-            const day = String(date.getDate()).padStart(2, "0");
-
-            window.open(
-                `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Vencimiento&dates=${year}${month}${day}T060000/${year}${month}${day}T080000`
-            );
-        });
-        resultElement.appendChild(calendarIcon);
-        resultElement.classList.add("withResult");
     }
 }

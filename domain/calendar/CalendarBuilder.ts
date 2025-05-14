@@ -149,7 +149,6 @@ class CalendarBuilder {
 
                 // Modify to ajust pascuas
                 if (date.toDateString() == easter.toDateString()) {
-                    // calendar[i][j] = new Holiday(day, "Semana de Turismo");
                     for (let x = j; x > j - 7; x--) { 
                         calendar[i][x-1] = new Holiday(calendar[i][x-1], "Semana de Turismo");
                     }
