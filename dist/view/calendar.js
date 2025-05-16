@@ -279,6 +279,10 @@ function loadRecentComputations() {
                 finalDate.textContent = e.result;
                 calendarIcon.src = "./assets/icons/calendar-symbol-svgrepo-com.svg";
                 calendarIcon.alt = "icono de calendario";
+                const res = e.result.split("/");
+                calendarIcon.addEventListener("click", () => {
+                    window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=Vencimiento&dates=${res[2]}${res[1]}${res[0]}T060000/${res[2]}${res[1]}${res[0]}T080000`);
+                });
                 leftSide.appendChild(categoryLabel);
                 leftSide.appendChild(notificationLabel);
                 leftSide.appendChild(daysLabel);
