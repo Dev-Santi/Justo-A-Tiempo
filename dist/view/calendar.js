@@ -3,6 +3,7 @@ window.addEventListener("load", calendar);
 function calendar() {
     var _a, _b;
     load();
+    loadRecentComputations();
     const months = (_a = document.getElementById("months")) === null || _a === void 0 ? void 0 : _a.children;
     for (let i = 0; i < months.length; i++) {
         months[i].addEventListener("click", (e) => {
@@ -271,7 +272,8 @@ function loadRecentComputations() {
                 const year = e.date.split("-")[0];
                 const month = e.date.split("-")[1];
                 const day = e.date.split("-")[2];
-                categoryLabel.textContent = e.category == "0" ? "Laboral" : e.category == "1" ? "Civil" : "Personalizado";
+                categoryLabel.textContent =
+                    e.category == "0" ? "Laboral" : e.category == "1" ? "Civil" : "Personalizado";
                 notificationLabel.textContent = "Notificación: " + day + "/" + month + "/" + year;
                 daysLabel.textContent = "Plazo: " + e.term + " días";
                 finalDate.textContent = e.result;
@@ -288,14 +290,6 @@ function loadRecentComputations() {
                 containerMaster.appendChild(container);
             });
         }
-        //  <div>
-        //     <div>
-        //        <h3>Laboral</h3>
-        //        <p>Notificación: 12/06/2024</p>
-        //        <p>Plazo: 15 días</p>
-        //     </div>
-        //     <div><span>12/06/2024</span><span><img src="./assets/icons/calendar-symbol-svgrepo-com.svg" alt=""></span></div>
-        //  </div>
     }
     catch (error) {
         console.log(error);

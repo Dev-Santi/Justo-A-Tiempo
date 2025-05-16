@@ -325,7 +325,7 @@ header.main_panel .header_icons button {
     .mt {
         margin-top: 2rem;
     }
-    
+
     header.main_panel h1 {
         display: none;
     }
@@ -379,7 +379,7 @@ header.main_panel .header_icons button {
     }
 
     .card_content {
-        min-width: auto;
+        min-width: 20.8rem;
         max-width: 20.8rem;
         padding: 1.2rem;
     }
@@ -424,15 +424,12 @@ header.main_panel .header_icons button {
 }
 
 @keyframes play-green {
-    0% {
-    }
-
     50% {
-        color: #79c078;
-        text-shadow: 0px 0px 4px rgba(0, 236, 20, 0.459);
+        color: var(--clr-3);
+        transform: scale(1.02);
     }
 
     100% {
-        color: var(--clr-4);
+        color: inherit;
     }
 }

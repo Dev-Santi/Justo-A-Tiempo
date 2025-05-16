@@ -66,9 +66,9 @@ function program() {
     });
     document.getElementById("days")?.addEventListener("touchmove", (e) => {
         const x = e.touches[0].clientX;
-        if (startPosition - x > 35) {
+        if (startPosition - x > 85) {
             nextMonth = currMonth + 1;
-        } else if (x - startPosition > 35) {
+        } else if (x - startPosition > 85) {
             nextMonth = currMonth - 1;
         }
     });

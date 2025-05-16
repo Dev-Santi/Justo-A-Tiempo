@@ -2,6 +2,7 @@ window.addEventListener("load", calendar);
 
 function calendar() {
     load();
+    loadRecentComputations();
 
     const months: any = document.getElementById("months")?.children;
     for (let i = 0; i < months.length; i++) {

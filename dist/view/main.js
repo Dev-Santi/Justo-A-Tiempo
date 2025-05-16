@@ -58,10 +58,10 @@ function program() {
     });
     (_d = document.getElementById("days")) === null || _d === void 0 ? void 0 : _d.addEventListener("touchmove", (e) => {
         const x = e.touches[0].clientX;
-        if (startPosition - x > 35) {
+        if (startPosition - x > 85) {
             nextMonth = currMonth + 1;
         }
-        else if (x - startPosition > 35) {
+        else if (x - startPosition > 85) {
             nextMonth = currMonth - 1;
         }
     });

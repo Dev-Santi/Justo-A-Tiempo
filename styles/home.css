@@ -79,10 +79,6 @@
     color: var(--clr-4);
 }
 
-#calcResult.playAnimation {
-    animation: result 0.25s linear forwards;
-}
-
 #idRecentComputations {
     display: flex;
     flex-direction: column;
@@ -94,9 +90,9 @@
     display: flex;
     gap: .25rem;
     padding: .25rem;
-    border-radius: .25rem;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 2px solid;
 }
 
 #idRecentComputations > div > div {
@@ -121,24 +117,23 @@
     opacity: .75;
 }
 
+#idRecentComputations > div:nth-child(1) {
+    animation: new_recent 1s ease-in-out;
+    opacity: .85;
+}
+
+#idRecentComputations > div:nth-child(2) {
+    opacity: .55;
+}
+
+#idRecentComputations > div:nth-child(3) {
+    opacity: .35;
+}
+
 #idRecentComputations h3 {
     font-size: 1rem;
     font-weight: 500;
     color: var(--clr-6);
-}
-
-@keyframes result{
-    0% {
-        outline: 0px solid var(--clr-7);
-    }
-
-    50% {
-        outline: 6px solid var(--clr-7);
-    }
-
-    100% {
-        outline: 0px solid var(--clr-7);
-    }
 }
 
 @keyframes slide-in {
@@ -151,8 +146,26 @@
     }
 }
 
+@keyframes new_recent {
+    0% {
+        color: inherit;
+    }
+
+    50% {
+        color: var(--clr-3);
+        transform: scale(1.01);
+    }
+
+    100% {
+        color:inherit;
+    }
+}
+
 /* 63.9375 == 1023px / desktop starts at 1024px */
 @media (max-width: 63.9375rem) {
+    #idRecentComputations > div:hover{
+        transform: scale(1.01);
+    }
 
     #idCalcDate {
         height: 10rem;
