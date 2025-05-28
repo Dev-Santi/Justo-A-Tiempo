@@ -2,7 +2,7 @@
 window.addEventListener("load", program);
 // Boton de guardar en inicio
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("../sw.js");
+    navigator.serviceWorker.register("../../sw.js");
 }
 function program() {
     var _a, _b, _c, _d, _e;

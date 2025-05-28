@@ -4,13 +4,13 @@
     "description": "Gestionador de plazos jurídicos.",
     "icons": [
         {
-            "src": "./assets/icons/arrow_1.png",
+            "src": "/assets/icons/arrow_1.png",
             "sizes": "32x32",
             "type": "image/png"
         }
     ],
     "start_url": "/index.html",
     "display": "fullscreen",
-    "theme_color": "#ffffff",
+    "theme_color": "#999999",
     "background_color": "#ffffff"
 }
