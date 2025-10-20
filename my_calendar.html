@@ -32,11 +32,7 @@
             </button>
 
             <ul>
-               <li>
-                  <!-- Decoration mark for the current page icon -->
-                  <div class="current_page_decoration"></div>
-                  <!-- End -->
-
+               <li class="disabled">
                   <a href="/">
                      <svg id="homeSvg" width="25" height="25" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -47,7 +43,11 @@
                      <span>Inicio</span>
                   </a>
                </li>
-               <li class="disabled">
+               <li>
+                <!-- Decoration mark for the current page icon -->
+                <div class="current_page_decoration"></div>
+                <!-- End -->
+
                   <a href="./my_calendar.html">
                      <img src="./assets/icons/calendar.svg" alt="Icono de inicio con forma de casita" />
                      <span>Mi Calendario</span>
@@ -120,80 +120,6 @@
 
          <!-- Current page content -->
          <section id="idCurrentPage" class="current_page">
-            <div class="card">
-               <h2>Calcular un plazo</h2>
-
-               <div id="calcContentContainer" class="card_content split_flex">
-                  <div>
-                     <form id="idCalcDate">
-                        <div class="align_inputs_with_labels">
-                           <label id="idLabelNoti" for="idNotificationDate">Fecha:</label>
-                           <input
-                              data-testid="testDateInput"
-                              id="idNotificationDate"
-                              min="2024-01-02"
-                              max="202-12-31"
-                              type="date"
-                           />
-                        </div>
-                        <div class="align_inputs_with_labels">
-                           <label for="idCategory">Categoría:</label>
-                           <select data-testid="testCategorySelector" id="idCategory">
-                              <option value="0">Laboral</option>
-                              <option value="1">Civil</option>
-                              <option value="2">Personalizado</option>
-                           </select>
-                           <img id="idCatArrow" class="arrow_icon" src="./assets/icons/arrow_1.png" alt="" />
-                        </div>
-                        <div id="idTermContainer" class="align_inputs_with_labels">
-                           <label for="idTerm">Plazo:</label>
-                           <input
-                              id="idTerm"
-                              type="number"
-                              value="15"
-                              max="999"
-                              min="0"
-                              data-testid="testDaysCountInput"
-                              id="idTerm"
-                           />
-                           <span id="idTermText" class="day_text ml_1">días</span>
-                        </div>
-                     </form>
-                  </div>
-                  <form data-testid="testCustomFilters" id="customFilters" class="custom_filters">
-                     <span id="customFiltersTitle">Seleccione las fechas en las que se suspende el cómputo:</span>
-                     <br />
-                     <span>
-                        <input type="checkbox" name="feria" id="idFeriaCustomFilter" checked />
-                        <label for="idFeriaCustomFilter">Ferias judiciales</label>
-                     </span>
-
-                     <span>
-                        <input type="checkbox" name="turismo" id="idTurismoCustomFilter" checked />
-                        <label for="idTurismoCustomFilter">Semana de turismo</label>
-                     </span>
-
-                     <span>
-                        <input type="checkbox" name="carnaval" id="idCarnavalCustomFilter" checked />
-                        <label for="idCarnavalCustomFilter">Lunes y martes de Carnaval</label>
-                     </span>
-
-                     <span>
-                        <input type="checkbox" name="feriado" id="idFeriadoCustomFilter" checked />
-                        <label for="idFeriadoCustomFilter">Feriados restantes</label>
-                     </span>
-
-                     <span>
-                        <input type="checkbox" name="finde" id="idFindeCustomFilter" checked />
-                        <label for="idFindeCustomFilter">Sábados y domingos</label>
-                     </span>
-                  </form>
-                  <button data-testid="testCalcBtn" id="idCalcDateBtn">Calcular</button>
-                  <div id="calcResult">
-                     <span>Resultado -> </span><span data-testid="testCalcResult" id="calcResultDate">--/--/--</span>
-                  </div>
-               </div>
-            </div>
             <!-- Calendario -->
             <div class="card">
                <h2 class="not_visible">Resultado:</h2>
@@ -246,20 +172,6 @@
                         alt="Boton para descargar el calendario judicial desde el sitio oficial"
                      />
                   </a>
-               </div>
-            </div>
-            <!-- Recent computations -->
-            <div class="card">
-               <h2 class="mt">Historial</h2>
-               <div id="idRecentComputations" class="card_content">
-                  <div>
-                     <div>
-                        <h3>---</h3>
-                        <p>Notificación: ---</p>
-                        <p>Plazo: ---</p>
-                     </div>
-                     <div><span>---</span></div>
-                  </div>
                </div>
             </div>
          </section>
